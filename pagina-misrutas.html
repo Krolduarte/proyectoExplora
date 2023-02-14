@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilos-menu-footer.css" />
+    <link rel="stylesheet" href="css/estilos-misrutas.css" />
+    <title>Mi perfil</title>
+  </head>
+  <body>
+    <div id="fondo"></div>
+    <div class="contenedor">
+      <!-- Menu   incluyendo logo,login y register -->
+      <div class="menu"></div>
+
+      <div class="principal">
+        <div class="uno"></div>
+        <div class="dos">
+          <div class="perfil">
+            <div class="titulo-perfil">
+              <span>Mis rutas</span>
+              <span class="profileName">UserName</span>
+              <div class="foto-perfil"></div>
+            </div>
+
+            <div class="filtros">
+              <h3>FILTROS</h3>
+              <div class="flexcol">
+                <div class="label">
+                  <label for="circular">Circular</label>
+                </div>
+                <div class="select">
+                  <select name="circular" id="circular">
+                    <option selected value="">--Circular--</option>
+                    <option value="true">Si</option>
+                    <option value="false">No</option></select
+                  >.
+                </div>
+              </div>
+
+              <div class="flexcol">
+                <div class="label">
+  <label for="intensidad">Dificultad</label>
+                </div>
+               <div class="select">
+ <select name="intensidad" id="intensidad">
+                  <option selected value="">--Intensidad--</option>
+                  <option value="0">Fácil</option>
+                  <option value="1">Moderado</option>
+                  <option value="2">Difícil</option>
+                  <option value="3">Muy difícil</option>
+                  <option value="4">Solo Expertos</option>
+                </select>
+               </div>
+               
+              </div>
+
+              <!-- <div class="boxfilters">
+                <div>
+                  <p id="altitudMin">Altitud mínima: </p>
+                </div>
+                <span>
+                  <input
+                    onclick="Mostrar()"
+                    id="barraAltitudMin"
+                    type="range"
+                    min="40"
+                    max="20000"
+                 
+                  />
+                </span>
+              </div> -->
+
+              <!-- fin div boxfilters-->
+            </div>
+            <!-- fin div filtros-->
+          </div>
+
+          <div class="tarjetas">
+            <!-- <div class="tarjeta">
+              <div class="leftside">
+                <div class="titulo">La Sagra</div>
+                <div class="imagen">
+                  <img
+                    class="icono-walker"
+                    src="img/img-principal/walker.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+              <div class="rightside">
+                <div class="favorito">
+                  <img
+                    class="icono-fav"
+                    src="img/img-principal/fav.png"
+                    alt="favorito"
+                  />
+                </div>
+                <div class="detalles">
+                  <div class="nivel">Dificil</div>
+
+                  <div class="iconoyspan">
+                    <div class="fila">
+                      <span
+                        >11.6 km<img
+                          class="icono-distancia"
+                          src="img/img-principal/distance.png"
+                          alt="distancia"
+                      /></span>
+
+                      <span
+                        >1200 m<img
+                          class="altura-up"
+                          src="img/img-principal/altitudarriba.png"
+                          alt="altura_alta"
+                      /></span>
+                    </div>
+
+                    <div class="fila">
+                      <span
+                        >6:30 h<img
+                          class="icono-tiempo"
+                          src="img/img-principal/icontime.png"
+                          alt="tiempo"
+                      /></span>
+
+                      <span
+                        >1200 m<img
+                          class="altura-down"
+                          src="img/img-principal/altitudarriba.png"
+                          alt="altura_baja"
+                      /></span>
+                    </div>
+
+                    <div class="fila">
+                      <span
+                        >Adrian87<img
+                          class="icono-avatar"
+                          src="img/img-principal/avatar.png"
+                          alt="avatar"
+                      /></span>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <!-- fin div dos -->
+
+        <!-- FIN FORMULARIO -->
+        <div class="tres">
+          <!-- <img class="vector2" src="img/img-perfil/waveright.svg" alt="" /> -->
+        </div>
+
+        <!-- FIN principal -->
+      </div>
+    </div>
+    <!-- FIN contenedor-->
+
+    <div class="footer">
+      <!-- importado desde header.html por medio de funciones.js -->
+    </div>
+
+    <script src="js/script-pagina-misrutas.js" type="module"></script>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  </body>
+</html>

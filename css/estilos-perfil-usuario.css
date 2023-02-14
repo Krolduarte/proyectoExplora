@@ -1,0 +1,420 @@
+body {
+  margin: 0 0 0 0;
+  font-family: "Raleway", sans-serif;
+  /* background: url("../img/img-registro/perfil.jpg"); */
+  background: url("../img/img-perfil/perfilusuario.svg"),
+    url("../img/img-registro/perfil.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 130vh;
+}
+
+html {
+  background-color: rgba(255, 253, 253, 0.92);
+}
+
+.opciones {
+  z-index: 2;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.xplora-logo > a {
+  color: white;
+}
+
+a.registrarse {
+  color: white;
+  border: 2px solid white;
+}
+
+.iniciar-sesion {
+  color: white;
+}
+
+.contenedor {
+  /* background-color: blue; */
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+
+  /* overflow:scroll; */
+  /* background-position: bottom 0px right 300px; */
+}
+
+/* .principal {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+} */
+
+.principal {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.foto-perfil {
+  border-radius: 50%;
+  width: 134px;
+  height: 134px;
+  background: url("../img/img-perfil/avtar.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* Picture */
+
+  box-sizing: border-box;
+}
+.formulario {
+  background-color: #f2f8f7;
+  width: 100%;
+  /* height: fit-content; */
+  /* margin-top:-80px; */
+  /* position: absolute; */
+  /* top: 0px;
+  margin-bottom: 10px; */
+  padding: 5% 5% 5px 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  margin-top: -15px;
+
+  /* padding:100px; */
+}
+
+.titulo-perfil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.titulo-perfil > span {
+  /* width: 300px; */
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  color: #254441;
+
+  margin: 0px 0px;
+}
+
+.titulo-perfil p {
+  font-size: 11px;
+}
+
+form input {
+  height: 30px;
+  border-radius: 5px;
+  border: 0.818182px solid #111111;
+}
+form label {
+  height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4545px;
+  line-height: 20px;
+}
+
+form {
+  width: 400px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.group {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 58px;
+  gap: 10px;
+}
+
+.box {
+  width: 40%;
+  box-sizing: border-box;
+}
+
+.box.elemento1 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.box.elemento2 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.box.elemento3 {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.icono {
+  width: 20px;
+  height: 20px;
+}
+
+.row {
+  display: flex;
+  height: 40px;
+  align-items: center;
+}
+
+.row > img,
+button {
+  margin-left: 10px;
+}
+
+label span {
+  color: #767676;
+}
+
+input[type="date"]#fecha:focus {
+  color: #495057;
+  /* background-color: #FFFFFF; */
+  color: #254441;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input:focus {
+  color: #495057;
+  /* background-color: #FFFFFF; */
+  color: #254441;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem #254441;
+}
+
+.error {
+  color: red;
+}
+
+.tipos-actividades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.tipos-actividades label {
+  cursor: pointer;
+  padding: 7px 7px;
+  background-color: white;
+  border: 1px solid #254441;
+  border-radius: 11px;
+}
+
+/* .tipos-actividades label:hover{
+  background-color: red;
+} */
+
+.tipos-actividades input {
+  visibility: hidden;
+}
+
+.selected {
+  color: white;
+  background-color: #254441;
+}
+
+#modificar {
+  margin-top: 50px;
+  background: #254441;
+  box-shadow: 0px 0.818182px 3.27273px rgba(0, 0, 0, 0.02),
+    0px 0.818182px 0.818182px rgba(0, 0, 0, 0.06);
+  border-radius: 3.27273px;
+  color: rgba(255, 253, 253, 0.92);
+}
+
+.info,
+.infoemail,
+.infopwd,
+.epf,
+.infouser {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4545px;
+  /* line-height: 20px; */
+  /* text-align: center; */
+}
+
+@media only screen and (max-width: 1000px) {
+  .col-izq {
+    width: 30%;
+  }
+
+  .col-der {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    background: rgba(255, 253, 253, 0.92);
+  }
+  .col-izq {
+    display: none;
+  }
+
+  .col-der {
+    width: 100%;
+  }
+
+  form {
+    padding-bottom: 100px;
+  }
+
+  #modificar {
+    margin-top: 30px;
+  }
+
+  .actfav {
+    margin-bottom: 0px;
+  }
+
+  .foto-perfil {
+    width: 70px;
+    height: 70px;
+  }
+  .xplora-logo > a {
+    color: black;
+    z-index: 2;
+    text-shadow: 0px 4px 4px #254441;
+  }
+
+  a.registrarse {
+    color: black;
+    border: 2px solid black;
+  }
+
+  .formulario {
+    width: 300px;
+    padding: 90px 40px 0px 40px;
+    margin-bottom: 0px;
+  }
+
+  .contenedor {
+    background-color: #f2f8f7;
+  }
+  body {
+    margin-bottom: 0;
+  }
+}
+
+#fondo {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  display: none;
+  margin: 0 auto;
+  z-index: 4;
+}
+
+#modalLogin {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#closeBtn {
+  height: 19px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+}
+form#inicio > p {
+  text-align: center;
+}
+
+#correo,
+#password2,
+#login {
+  width: 90%;
+}
+
+#login {
+  margin-top: 10px;
+  background-color: #254441;
+  color: white;
+}
+#inicio {
+  visibility: hidden;
+  width: 300px;
+  height: 210px;
+  position: absolute;
+  top: 40%;
+  background-color: #f2f8f7;
+  z-index: 4;
+  padding: 10px;
+
+  border-radius: 15px;
+}
+
+form#inicio > div {
+  display: flex;
+  justify-content: center;
+}
+
+#formulario > a {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.uno {
+  width: 32%;
+  /* position: relative;
+  height: 100vh;
+  flex-grow: 0;
+  background-color: red; */
+}
+
+dos {
+  display: flex;
+  justify-content: center;
+  width: 36%;
+}
+
+.tres {
+  width: 32%;
+  /* height: 100vh;
+  position: relative;
+  
+  background-color: red; */
+}
+
+#showPwd {
+  visibility: hidden;
+  margin-left: 20px;
+  height: 19px;
+}
+
+.success {
+  text-align: center;
+  color: blue;
+  animation-duration: 1.5s;
+  animation-name: rebote;
+  box-shadow: 0 0 0.6rem #254441;
+}
+
+.divInfo {
+  box-sizing: border-box;
+  padding: 0px 1px;
+}

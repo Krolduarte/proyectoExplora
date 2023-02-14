@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilos-menu-footer.css" />
+    <link rel="stylesheet" href="css/estilos-perfil-usuario.css" />
+    <title>Mi perfil</title>
+  </head>
+  <body>
+    <div id="fondo"></div>
+    <div class="contenedor">
+      <!-- Menu   incluyendo logo,login y register -->
+      <div class="menu"></div>
+
+      <div class="principal">
+        <div class="uno">
+          <!-- <img class="vector1" src="img/img-perfil/Vector(1).svg" alt="" /> -->
+        </div>
+        <div class="dos">
+          <div class="formulario">
+            <!-- AREA DEL TITULO -->
+            <div class="titulo-perfil">
+              <span>Mi Perfil</span><span class="profileName"> </span>
+            </div>
+
+            <!-- FIN AREA DEL TITULO -->
+            <!-- foto -->
+            <div class="foto-perfil"></div>
+            <div class="row">
+              <img
+                class="icono"
+                src="img/img-perfil/edit.png"
+                alt="lapiz-editar"
+              />
+              <!-- <button id="btnImg">Editar</button> -->
+              <input type="file" id="btnImg">
+            </div>
+
+            <!-- FORMULARIO -->
+            <form action="" method="POST" id="formulario">
+             
+                <!-- NOMBRE Y APELLIDO -->
+            
+                  <label for="nombre">Nombre Completo</label>
+                  <input
+                    type="text"
+                    name="nombre"
+                    id="nombre"
+                   disabled
+                  />
+              
+
+                <!-- <div class="box elemento2">
+                  <label for="apellidos">Apellidos</label>
+                  <input
+                    type="text"
+                    name="apellidos"
+                    id="apellidos"
+                    
+                  />
+                </div> -->
+            
+
+              <!-- EMAIL -->
+              <label for="email">Correo Electrónico</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                
+              />
+              <div class="infoemail"></div>
+
+              <!-- NOMBRE DE USUARIO -->
+              <label for="usuario"
+                >Nombre de Usuario
+                <span>(únicamente letras, números y guiones bajos)</span></label
+              >
+              <input
+                type="text"
+                name="usuario"
+                id="usuario"
+                disabled
+              />
+              <div class="infouser"></div>
+              <!-- CONTRASEÑA Y REPETIR CONTRASEÑA -->
+
+              <div class="box row">
+                <label for="pwd">Contraseña</label>
+                <img
+                  class="icono"
+                  src="img/img-perfil/edit.png"
+                  alt="lapiz-editar"
+                /><button id="editPwd">Editar</button>
+                <input type="text" id="showPwd">
+              </div>
+
+              <!-- ESTATURA PESO Y FECHA -->
+              <div class="group">
+                <div class="box elemento3">
+                  <label for="estatura">Estatura <span> (en cms)</span></label>
+                  <input
+                    type="number"
+                    name="estatura"
+                    id="estatura"
+                    min="100"
+                    max="220"
+                 
+                  />
+                </div>
+
+                <div class="box elemento3">
+                  <label for="peso">Peso <span>(en kgs)</span></label>
+                  <input
+                    type="number"
+                    name="peso"
+                    id="peso"
+                  
+                    min="40"
+                    max="200"
+                  />
+                </div>
+
+                <div class="box elemento3">
+                  <label for="fecha">Fecha de nacimiento</label>
+                  <input
+                    type="date"
+                    name="fecha"
+                    id="fecha"
+                    value="1991-12-12"
+                  />
+                </div>
+              </div>
+              <div class="epf"></div>
+
+              <div>
+                <p class="actfav">Actividades Favoritas</p>
+
+                <div class="tipos-actividades">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="bicicleta"
+                      value="bicicleta"
+                      class="activities"
+                    />
+                    <label for="bicicleta">Bicicleta </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="moto"
+                      value="moto"
+                      class="activities"
+                    />
+                    <label for="moto">Moto de carretera </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="running"
+                      value="running"
+                      class="activities"
+                    />
+                    <label for="running">Running </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="paseo"
+                      value="paseo"
+                      class="activities"
+                    />
+                    <label for="paseo">Paseo </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="alpinismo"
+                      value="alpinismo"
+                      class="activities"
+                    />
+                    <label for="alpinismo">Alpinismo </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="kayak"
+                      value="kayak"
+                      class="activities"
+                    />
+                    <label for="kayak">Kayak </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BOTON modificar -->
+              <input type="submit" value="Modificar" id="modificar" />
+              <a  class="eliminar" href="">Eliminar mi cuenta</a>
+            </form>
+            <div class="divInfo"></div>
+          </div>
+        </div>
+        
+        <!-- FIN FORMULARIO -->
+        <div class="tres">
+          <!-- <img class="vector2" src="img/img-perfil/waveright.svg" alt="" /> -->
+        </div>
+      </div>
+      <!-- FIN principal -->
+    </div>
+    <!-- FIN contenedor-->
+
+    <div class="footer">
+      <!-- importado desde header.html por medio de funciones.js -->
+    </div>
+
+    <script src="js/script-perfil-usuario.js" type="module"></script>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  </body>
+</html>

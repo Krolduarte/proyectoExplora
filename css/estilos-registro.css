@@ -1,0 +1,386 @@
+body {
+  margin: 0 0 0 0;
+  font-family: "Raleway", sans-serif;
+  background-color: #f2f8f7;
+  /* height: 100vh; */
+}
+
+.opciones {
+  z-index: 2;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.xplora-logo > a {
+  color: white;
+}
+
+a.registrarse {
+  color: black;
+  border: 2px solid black;
+}
+
+.iniciar-sesion {
+  color: black;
+}
+
+.contenedor {
+  /* background-color: blue; */
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background: url("../img/img-registro/perfil.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom 0px right 300px;
+}
+
+.principal {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.col-izq {
+  box-sizing: border-box;
+  width: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+  flex-grow: 0;
+}
+
+.col-der {
+  margin-top: -80px;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 50%;
+  height: 100vh;
+  background-color: #f2f8f7;
+  display: flex;
+  justify-content: center;
+  flex-grow: 2;
+}
+
+.formulario {
+  width: 600px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  padding: 90px 90px 10px 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* padding:100px; */
+}
+
+.titulo-unete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.titulo-unete > h1 {
+  /* width: 300px; */
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  color: #254441;
+
+  margin: 0px 0px;
+}
+
+.titulo-unete p {
+  font-size: 11px;
+}
+
+form input {
+  height: 30px;
+  border-radius: 5px;
+  border: 0.818182px solid #111111;
+}
+form label {
+  height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4545px;
+  line-height: 20px;
+}
+
+form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.group {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 58px;
+  gap: 10px;
+}
+
+.box {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.box.elemento1 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.box.elemento2 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.box.elemento3 {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+label span {
+  color: #767676;
+}
+
+input[type="date"]#fecha:focus {
+  color: #495057;
+  /* background-color: #FFFFFF; */
+  color: #254441;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input:focus {
+  color: #495057;
+  /* background-color: #FFFFFF; */
+  color: #254441;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem #254441;
+}
+
+.error {
+  background-color: #254441;
+  color: white;
+  border-radius: 10px;
+  width: fit-content;
+  box-sizing: border-box;
+  height: fit-content;
+}
+
+.tipos-actividades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.tipos-actividades label {
+  cursor: pointer;
+  padding: 7px 7px;
+  background-color: white;
+  border: 1px solid #254441;
+  border-radius: 11px;
+}
+
+/* .tipos-actividades label:hover{
+  background-color: red;
+} */
+
+.tipos-actividades input {
+  visibility: hidden;
+}
+
+.selected {
+  color: white;
+  background-color: #254441;
+}
+
+#registrarse {
+  margin-top: 30px;
+  background: #254441;
+  box-shadow: 0px 0.818182px 3.27273px rgba(0, 0, 0, 0.02),
+    0px 0.818182px 0.818182px rgba(0, 0, 0, 0.06);
+  border-radius: 3.27273px;
+  color: rgba(255, 253, 253, 0.92);
+}
+
+.info,
+.infoemail,
+.infopwd,
+.epf,
+.infouser {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4545px;
+  /* line-height: 20px; */
+  /* text-align: center; */
+}
+
+@media only screen and (max-width: 1000px) {
+  .col-izq {
+    width: 30%;
+  }
+
+  .col-der {
+    width: 70%;
+    
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .col-izq {
+    display: none;
+  }
+
+  .col-der {
+    width: 100%;
+  
+  }
+ 
+
+  .xplora-logo > a {
+    color: black;
+    z-index: 2;
+    text-shadow: 0px 4px 4px #254441;
+  }
+
+  .formulario {
+    width: 500px;
+    padding: 90px 80px 0px 80px;
+    margin-bottom: 0px;
+  }
+
+  .contenedor {
+    background-color: #f2f8f7;
+  }
+  body {
+    margin-bottom: 0;
+  }
+}
+
+/* #fondo {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  display: none;
+  margin: 0 auto;
+  z-index: 4;
+}
+
+#modalLogin {
+ 
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#closeBtn {
+  height: 19px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+}
+form#inicio > p {
+  text-align: center;
+  font-size: larger;
+  font-weight: 700;
+}
+
+#username,
+#password2,
+#login {
+  width: 90%;
+}
+
+#login {
+  margin-top: 10px;
+  background-color: #254441;
+  color: white;
+ 
+}
+#inicio {
+  visibility: hidden;
+  width: 250px;
+  height: 220px;
+  position: absolute;
+  top: 40%;
+  background-color: #f2f8f7;
+  z-index: 4;
+  padding: 10px;
+
+  border-radius: 15px;
+}
+
+form#inicio > div {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+} */
+#inicio {
+  visibility: hidden;
+  width: 250px;
+  height: 220px;
+  position: absolute;
+  top: 40%;
+  background-color: #f2f8f7;
+  z-index: 4;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
+
+input:invalid {
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: 0 0 0.6rem #254441;
+}
+
+@keyframes rebote {
+  0% {
+    tranform: scale (0.1);
+    scale: 0;
+  }
+  60% {
+    transform: scale (1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale (1);
+  }
+}
+.success {
+  text-align: center;
+  color: blue;
+  animation-duration: 1.5s;
+  animation-name: rebote;
+  box-shadow: 0 0 0.6rem #254441;
+}

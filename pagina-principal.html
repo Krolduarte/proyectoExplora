@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos-pagina-principal.css" />
+    <link rel="stylesheet" href="css/estilos-menu-footer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel=”stylesheet” href=”ruta/a/font-awesome/css/font-awesome.min.css”>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+
+    <title>Principal</title>
+  </head>
+  <body>
+    <div id="fondo"></div>
+    <div class="header">
+      <div class="menu">
+        <!-- Menu exportado de funciones.js -->
+      </div>
+
+      <!-- Area de busqueda -->
+      <div class="busqueda">
+        <div class="titulo-central">Buscador de Rutas</div>
+      </div>
+
+      <div class="barra-busqueda">
+        <div class="buscador">
+          <img class="lupa" src="img/img-index/lupa.png" alt="lupa" />
+          <input
+            type="text"
+            name="buscadorInput"
+            id="buscadorInput"
+            placeholder="Buscar Rutas"
+          />
+        </div>
+
+        <!-- <div class="flexcol">
+          <label for="circular">Circular</label>
+          <select name="circular" id="circular">
+            <option selected value="">--Circular--</option>
+            <option value="true">Si</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div class="flexcol">
+          <label for="intensidad">Dificultad</label>
+          <select name="intensidad" id="intensidad">
+            <option selected value="">--Intensidad--</option>
+            <option value="0">Fácil</option>
+            <option value="1">Moderado</option>
+            <option value="2">Difícil</option>
+            <option value="3">Muy difícil</option>
+            <option value="4">Solo Expertos</option>
+          </select>
+        </div>
+        <div class="flexcol">
+          <label for="minDist" class="distancia">Distancia Mín.</label>
+          <input type="number" name="minDist" id="minDist" />
+        </div>
+
+        <div class="flexcol">
+          <label for="maxDist" class="distancia">Distancia Máx.</label>
+          <input type="number" name="maxDist" id="maxDist" />
+        </div> -->
+        <a class="boton-buscador" id="mostrarFiltros" href="">Ver Filtros</a>
+        <a class="boton-buscador" href="">Agregar Rutas</a>
+      </div>
+    </div>
+
+    <!-- fin div header -->
+
+    <div class="contenido">
+      <div class="filtros">
+        <img
+      src="https://cdn-icons-png.flaticon.com/512/8221/8221059.png"
+      id="closeBtn"
+      alt="icono_de_cerrar"
+    />
+        <h3>FILTROS</h3>
+        <div class="flexcol">
+       
+          <div class="select">
+            <select name="circular" id="circular">
+              <option selected value="">--Circular--</option>
+              <option value="true">Si</option>
+              <option value="false">No</option></select
+            >
+          </div>
+        </div>
+
+        <div class="flexcol">
+         
+          <div class="select">
+            <select name="intensidad" id="intensidad">
+              <option selected value="">--Intensidad--</option>
+              <option value="0">Fácil</option>
+              <option value="1">Moderado</option>
+              <option value="2">Difícil</option>
+              <option value="3">Muy difícil</option>
+              <option value="4">Solo Expertos</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-izq">
+        <h1>LISTA DE RUTAS</h1>
+
+        <!-- <div class="tarjeta">
+    
+          <div class="leftside">
+            <div class="titulo">La Sagra</div>
+            <div class="imagen">
+              <img
+                class="icono-walker"
+                src="img/img-principal/walker.png"
+                alt=""
+              />
+            </div>
+          </div>
+     
+          <div class="rightside">
+            <div class="favorito">
+              <img
+                class="icono-fav"
+                src="img/img-principal/fav.png"
+                alt="favorito"
+              />
+            </div>
+            <div class="detalles">
+              <div class="nivel">Dificil</div>
+
+              <div class="iconoyspan">
+                <div class="fila">
+                  <span
+                    >11.6 km<img
+                      class="icono-distancia"
+                      src="img/img-principal/distance.png"
+                      alt="distancia"
+                  /></span>
+
+                  <span
+                    >1200 m<img
+                      class="altura-up"
+                      src="img/img-principal/altitudarriba.png"
+                      alt="altura_alta"
+                  /></span>
+                </div>
+
+                <div class="fila">
+                  <span
+                    >6:30 h<img
+                      class="icono-tiempo"
+                      src="img/img-principal/icontime.png"
+                      alt="tiempo"
+                  /></span>
+
+                  <span
+                    >1200 m<img
+                      class="altura-down"
+                      src="img/img-principal/altitudarriba.png"
+                      alt="altura_baja"
+                  /></span>
+                </div>
+
+                <div class="fila">
+                  <span
+                    >Adrian87<img
+                      class="icono-avatar"
+                      src="img/img-principal/avatar.png"
+                      alt="avatar"
+                  /></span>
+                </div>
+              </div>
+         
+            </div>-->
+        <!-- fin div detalles -->
+      </div>
+      <!-- fin div columna izquierda -->
+
+      <div class="col-derecha">
+        <div id="map"></div>
+      </div>
+    </div>
+    <!-- fin div contenido -->
+
+    <div class="footer">
+      <!-- importado desde header.html por medio de funciones.js -->
+    </div>
+    <!-- fin footer -->
+
+    <script src="js/script-pagina-principal.js" type="module"></script>
+
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  </body>
+</html>

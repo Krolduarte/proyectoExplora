@@ -1,0 +1,477 @@
+body {
+  width: 100%;
+  margin: 0 0 0 0;
+  font-family: "Raleway", sans-serif;
+  background-color: #f8fafc;
+  height: 100vh;
+ 
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+}
+
+.xplora-logo > a {
+  color: white;
+}
+
+.iniciar-sesion {
+  color: black;
+}
+
+/* ##########################################################################
+                                HEADER
+############################################################################# */
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  height: 270px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
+    url("../img/img-index/foto-header1.jpeg") no-repeat top;
+  /* background: url("../img/img-index/foto-header1.jpeg") no-repeat top; */
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* area de busqueda */
+.busqueda {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.titulo-central {
+  color: white;
+  font-weight: 600;
+  font-size: 36px;
+  /* margin-top: 100px; */
+}
+
+.barra-busqueda {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  margin-top: 10px;
+}
+
+.buscador {
+  
+  display: flex;
+  background: #fdf9f9;
+  border: 1px solid #333333;
+  border-radius: 20px;
+  /* width: 400px; */
+  height: 34px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.lupa {
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+.buscador > p {
+  text-align: left;
+  color: grey;
+  margin-left: 5px;
+}
+
+a.boton-buscador {
+  padding: 7px 10px;
+  border: 2px solid white;
+  border-radius: 40px;
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+/* ###############################################################
+                         LISTA DE RUTAS
+############################################################### */
+
+.contenido {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-izq {
+  box-sizing: border-box;
+  /* min-width: 400px; */
+  display: flex;
+  flex-direction: column;
+  background-color: #011714;
+  height: 100vh;
+  width: 30%;
+  overflow: scroll;
+}
+
+.col-izq > h1 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 36px;
+  color: #fbf3f3;
+  margin-left: 1%;
+}
+
+.tarjeta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fffbfb;
+  margin: 20px 10px 20px 10px;
+  /* height:20%; */
+  min-height: 151px;
+  min-width: 340px;
+}
+
+.leftside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 45%;
+  /* justify-content: center; */
+}
+
+.titulo {
+  box-sizing: border-box;
+  margin-left: 12px;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  width: 190px;
+  /* line-height: 35px; */
+}
+
+.imagen {
+  width: 168px;
+  min-width: 100px;
+  background: url("../img/img-principal/senderismosunset.jpg");
+  background-size: cover;
+  height: 100px;
+  margin-top: 3px;
+  margin-left: 12px;
+}
+
+.rightside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 44%;
+  height: 100%;
+}
+
+/* PARTE DERECHA DE LA TARJETA */
+.detalles {
+  background-color: white;
+  width: 90%;
+  height: 81%;
+  font-size: 11px;
+  margin: 0px 1px 0px 20px;
+}
+
+.nivel {
+  width: 62px;
+  height: 20px;
+  /* background-color: #fd0505; */
+  background-color: grey;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 2px;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+}
+
+/* TAÑANO DE ICONOS */
+.icono-distancia {
+  width: 21px;
+  height: 21px;
+}
+
+.altura-up,
+.altura-down {
+  width: 16px;
+  height: 16px;
+}
+
+.altura-down {
+  transform: rotate(180deg);
+}
+
+.icono-tiempo {
+  width: 13px;
+  height: 13px;
+}
+
+.icono-avatar {
+  width: 17px;
+  height: 17px;
+}
+
+.icono-walker {
+  width: 18px;
+  height: 21px;
+  margin: 5px 5px 0px 5px;
+}
+
+.favorito {
+  position: relative;
+  width: 17px;
+  height: 17px;
+}
+.icono-fav {
+  position: absolute;
+  bottom: 60px;
+  left: 140px;
+  width: 17px;
+  height: 17px;
+}
+
+div.iconoyspan > span {
+  padding: 10px 0px;
+}
+
+div.fila > span > img {
+  margin-left: 3px;
+}
+
+div.fila > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ###############################################################
+                         COLUMNA DERECHA
+############################################################### */
+
+.col-derecha {
+  box-sizing: border-box;
+  background-color: #011714;
+  /* min-width: 100px; */
+  width: 70%;
+  min-width: 200px;
+  min-height: 200px;
+  height: 100vh;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+#map {
+  margin: 0 auto;
+  box-sizing: border-box;
+  height: 96%;
+  width: 96%;
+  min-width: 200px;
+  min-height: 200px;
+  z-index: 1;
+}
+
+input[type=text]#buscadorInput {
+  padding: 7px;
+  border: none;
+ width:350px;
+border-radius: 20px;
+outline: none;
+}
+
+.green {
+  background-color: green;
+}
+
+/* .distancia {
+  color: white;
+}
+
+input[type="number"] {
+  border-radius: 10px;
+  height: 25px;
+  width: 80px;
+}*/
+select {
+  height: 29px;
+  width: 80px;
+}
+label {
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.flexcol {
+  margin-top: -12px;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+  color: black;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.tomato {
+  background-color: tomato;
+}
+
+.red {
+  background-color: red;
+}
+
+.filtros{
+  display:none;
+   font-size: 11px;
+   position:absolute;
+   border-radius: 20px;
+   background-color: rgba(193, 205, 200, 0.8);
+   border: 1px solid grey;
+   right: 25px;
+   z-index:2;
+   padding:20px;
+   top:300px;
+ }
+ 
+ 
+ select{
+   width:100%;
+ 
+   margin-bottom: 6px;;
+ }
+ 
+ .boxfilters{
+   line-height: 0px;;
+ 
+ }
+
+@media only screen and (max-width: 1260px) {
+  .tarjeta {
+    width: 80%;
+  }
+
+  .col-derecha {
+    width: 60%;
+  }
+
+  .col-izq {
+    width: 40%;
+  }
+
+  .titulo {
+    font-size: 12px;
+  }
+
+  .detalles {
+    padding: 2px;
+  }
+  .titulo-central{
+  margin-top:14px;
+  }
+
+  /* .barra-busqueda{
+    background-color: red;
+    margin-top: 20px;;
+  } */
+}
+
+
+@media only screen and (max-width: 884px) {
+  .col-derecha {
+    width: 50%;
+  }
+
+  .col-izq {
+    width: 50%;
+  }
+
+  .titulo {
+    font-size: 12px;
+  }
+
+  .header{
+    height: 210px;
+  }
+
+   .titulo-central{
+    font-size: 20px;
+    margin-top:14px;
+  }
+
+  .barra-busqueda{
+    margin-top: 1px;
+  } 
+  .buscador{
+    width: 250px;;
+    min-width: 150px;
+  }
+  .boton-buscador{
+    background-color:#011714;
+    font-size: 6px;
+  }
+
+
+}
+
+@media only screen and (max-width: 710px) {
+  .contenido {
+    flex-wrap: wrap;
+  }
+  .col-derecha {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    order: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #011714;
+  }
+
+  .col-izq {
+    width: 100%;
+    order: 2;
+    padding-bottom: 30px;
+  }
+
+  #map {
+    width: 90%;
+    height: 70%;
+  }
+
+  .tarjeta {
+    margin: 20px 30px;
+  }
+
+
+
+
+}
+
+/* filtros */
+
+
+

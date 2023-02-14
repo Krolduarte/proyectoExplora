@@ -1,0 +1,549 @@
+body {
+  margin: 0 0 0 0;
+  font-family: "Raleway", sans-serif;
+  /* background: url("../img/img-registro/perfil.jpg"); */
+  background: url("../img/img-misrutas/fondo.png"),
+    url("../img/img-registro/perfil.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: fit-content;
+overflow: scroll;
+}
+
+html{
+  background-color:#f2f8f7
+}
+
+.opciones {
+  z-index: 2;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.xplora-logo > a {
+  color: white;
+}
+
+a.registrarse {
+  color: black;
+  border: 2px solid black;
+}
+
+.iniciar-sesion {
+  color: black;
+}
+
+.contenedor {
+  /* background-color: blue; */
+  box-sizing: border-box;
+  width: 100vw;
+  height: 110vh;
+}
+.principal {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  /* padding-bottom: 50px; */
+}
+.uno {
+  width: 18%;
+}
+.dos {
+  width: 65%;
+  /* border: 1px solid red; */
+  display: flex;
+  min-width: 300px;
+
+  justify-content: center;
+  align-content: center;
+}
+
+.tres {
+  width: 17%;
+}
+
+
+
+.perfil {
+  width: 40%;
+  
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+  min-width: 200px;
+
+}
+
+.filtroText{
+ 
+padding:0px;
+margin:2px;
+}
+
+.tarjetas {
+  width: 60%;
+ 
+}
+
+
+.foto-perfil {
+  margin-top: 10px;
+  border-radius: 50%;
+  width: 134px;
+  height: 134px;
+  background: url("../img/img-perfil/avtar.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* Picture */
+
+  box-sizing: border-box;
+}
+
+.titulo-perfil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.titulo-perfil > span {
+  /* width: 300px; */
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  color: #254441;
+  margin: 0px 0px;
+}
+
+.titulo-perfil p {
+  font-size: 11px;
+}
+
+.boxfilters {
+  text-align: justify;
+}
+
+.flexcol {
+  display: flex;
+  text-align: justify;
+  flex-direction: column;
+}
+
+ .label{
+  width:50%;
+}
+.select{
+ 
+  width:160px;
+}
+select{
+  width:100%
+}
+
+.tarjetas {
+  box-sizing: border-box;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+ 
+  height:100vh;
+  width: 25%;
+  overflow: scroll;
+ 
+}
+
+.btnFiltrar{
+  width:70px;
+  height:30px;
+  border-radius: 10px;
+ text-align: center;
+}
+
+.filtros{
+margin-top: -10px;
+  font-size: 11px;
+  border-radius: 20px;
+  padding:20px;
+  
+  }
+/* ANTIGUOS */
+
+
+@media only screen and (max-width: 600px) {
+
+  .principal{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .dos {
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    
+  }
+  .perfil{
+    width:100%;
+  }
+
+  .tarjetas{
+  
+    width: 100%;
+  }
+
+  .uno, .tres{
+    width:5%
+  }
+
+.perfil{
+  border-radius: 20px;
+  padding:10px 3px;
+  margin-top: 500px;
+}
+
+.foto-perfil{
+  display: none;
+}
+
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 800px) {
+
+
+  form {
+    padding-bottom: 100px;
+  }
+
+  #modificar {
+    margin-top: 30px;
+  }
+
+  .actfav {
+    margin-bottom: 0px;
+  }
+
+  .foto-perfil {
+    width: 70px;
+    height: 70px;
+  }
+  .xplora-logo > a {
+    color: black;
+    z-index: 2;
+    text-shadow: 0px 4px 4px #254441;
+  }
+
+  a.registrarse {
+    color: black;
+    border: 2px solid black;
+  }
+
+  .formulario {
+    width: 300px;
+    padding: 90px 40px 0px 40px;
+    margin-bottom: 0px;
+  }
+
+  .contenedor {
+    background-color: #f2f8f7;
+  }
+  body {
+    margin-bottom: 0;
+  }
+}
+
+
+
+
+/* #fondo {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    display: none;
+    margin: 0 auto;
+    z-index: 4;
+  }
+  
+  #modalLogin {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #closeBtn {
+    height: 19px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+  }
+  form#inicio > p {
+    text-align: center;
+  } */
+
+/* #correo,
+  #password2,
+  #login {
+    width: 90%;
+  }
+  
+  #login {
+    margin-top: 10px;
+    background-color: #254441;
+    color: white;
+  }
+  #inicio {
+    visibility: hidden;
+    width: 300px;
+    height: 210px;
+    position: absolute;
+    top: 40%;
+    background-color: #f2f8f7;
+    z-index: 4;
+    padding: 10px;
+  
+    border-radius: 15px;
+  }
+  
+  form#inicio > div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #formulario > a {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+  */
+
+/* .vector1 {
+     height: 100vh; 
+    width: 294px;
+     top: -200px; 
+    position: absolute;
+  
+  } */
+
+/* .vector2 {
+    height: 100vh;
+    width: 293.77px;
+     top: -200px; 
+    position: absolute;
+  left: 0px;
+    
+  } */
+
+/* tarjetas estilos */
+
+.col-izq {
+  box-sizing: border-box;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  background-color: #011714;
+  height: 100vh;
+  width: 25%;
+  overflow: scroll;
+}
+
+.col-izq > h1 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 36px;
+  color: #fbf3f3;
+  margin-left: 5%;
+}
+
+.tarjeta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fffbfb;
+  margin: 0px 10px 20px 10px;
+  /* height:20%; */
+  min-height: 151px;
+  min-width: 370px;
+  margin-top: 15px;
+}
+
+.leftside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  /* justify-content: center; */
+}
+
+.titulo {
+  box-sizing: border-box;
+  margin-left: 12px;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  /* line-height: 35px; */
+}
+
+.imagen {
+  width: 168px;
+  background: url("../img/img-principal/senderismosunset.jpg");
+  background-size: cover;
+  height: 100px;
+  margin-top: 3px;
+  margin-left: 12px;
+}
+
+.rightside {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  width: 44%;
+  height: 100%;
+}
+
+/* PARTE DERECHA DE LA TARJETA */
+.detalles {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 90%;
+  height: 81%;
+  font-size: 11px;
+  padding: 0px 20px 0px 20px;
+}
+
+.nivel {
+  width: 62px;
+  height: 20px;
+  /* background-color: #fd0505; */
+ 
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 2px;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+}
+
+/* TAÑANO DE ICONOS */
+.icono-distancia {
+  width: 21px;
+  height: 21px;
+}
+
+.altura-up,
+.altura-down {
+  width: 16px;
+  height: 16px;
+}
+
+.altura-down {
+  transform: rotate(180deg);
+}
+
+.icono-tiempo {
+  width: 13px;
+  height: 13px;
+}
+
+.icono-avatar {
+  width: 17px;
+  height: 17px;
+}
+
+.icono-walker {
+  width: 18px;
+  height: 21px;
+  margin: 5px 5px 0px 5px;
+}
+
+.favorito {
+  position: relative;
+  width: 17px;
+  height: 17px;
+}
+.icono-fav {
+  position: absolute;
+  top: -105px;
+  left: 170px;
+  width: 17px;
+  height: 17px;
+}
+
+div.iconoyspan > span {
+  padding: 10px 0px;
+}
+
+div.fila > span > img {
+  margin-left: 3px;
+}
+
+div.fila > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+  color: black;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.tomato {
+  background-color: tomato;
+}
+
+.red {
+  background-color: red;
+}
+
+/* .facil{
+  background-color: green;
+}
+
+.moderado{
+  background-color: yellow;
+  color: black;
+}
+
+.dificil{
+  background-color: orange;
+}
+
+.hard{
+  background-color: tomato;
+}
+
+.expertos{
+  background-color: red;
+} */

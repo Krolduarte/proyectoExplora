@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos-index.css" />
+    <link rel="stylesheet" href="css/estilos-menu-footer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel=”stylesheet” href=”ruta/a/font-awesome/css/font-awesome.min.css”>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="fondo"></div>
+    <div class="header">
+      <div class="menu">
+        <!-- Menu exportado de funciones.js -->
+      </div>
+
+      <!-- Area de busqueda -->
+      <div class="busqueda">
+        <div class="titulo-central">Tu aventura empieza aqui</div>
+        <div class="buscador">
+          <a href="pagina-principal.html"
+            ><img class="lupa" src="img/img-index/lupa.png" alt="lupa" />
+            <input
+              type="text"
+              name="buscadorInput"
+              id="buscadorInput"
+              placeholder="Buscar Rutas"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <!-- fin div header -->
+
+    <!-- curva -->
+    <div class="curva">
+      <svg
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+        style="height: 100%; width: 100%"
+      >
+        <path
+          d="M-5.92,-1.47 C332.11,225.48 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+          style="stroke: none; fill: #f8fafc"
+        ></path>
+      </svg>
+    </div>
+    <!-- fin div curva -->
+
+    <!-- Contenido -->
+
+    <div class="principal">
+      <div class="titulo-funciona">
+        <p>¿Cómo funciona?</p>
+      </div>
+      <div class="funcionamiento">
+        <div class="tarjetas-funcionamiento">
+          <!-- Tarjeta individual con las opciones de como funciona -->
+          <div class="tarjeta">
+            <div class="front">
+              <img
+                class="funcionamiento-iconos"
+                src="img/img-index/lupa-grande.png"
+                alt="lupa-grande"
+              />
+
+              <div class="titulo-tarjeta">Explora</div>
+            </div>
+            <div class="back">
+              <div class="descripcion">
+                Busca una ruta dependiendo de nivel de dificultad, distancia,
+                elevación y otros factores
+              </div>
+            </div>
+          </div>
+          <!-- fin div tarjeta -->
+
+          <div class="tarjeta">
+            <div class="front">
+              <img
+                class="funcionamiento-iconos"
+                src="img/img-index/miramapas.png"
+                alt="lupa-grande"
+              />
+
+              <div class="titulo-tarjeta">Descubre</div>
+            </div>
+
+            <div class="back">
+              <div class="descripcion">Mira detalles de la ruta escogida.</div>
+            </div>
+          </div>
+
+          <div class="tarjeta">
+            <div class="front">
+              <img
+                class="funcionamiento-iconos"
+                src="img/img-index/contribuye.png"
+                alt="lupa-grande"
+              />
+
+              <div class="titulo-tarjeta">Contribuye</div>
+            </div>
+            <div class="back">
+              <div class="descripcion">
+                Sube fotos de las rutas que realices para que otros miembros de
+                la comunidad puedan guiarse
+              </div>
+            </div>
+          </div>
+
+          <div class="tarjeta">
+            <div class="front">
+              <img
+                class="funcionamiento-iconos"
+                src="img/img-index/share.png"
+                alt="lupa-grande"
+              />
+
+              <div class="titulo-tarjeta">Comparte</div>
+            </div>
+
+            <div class="back">
+              <div class="descripcion">
+                Comparte la ruta con otros miembros de la comunidad
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- fin div tarjetas-funcionamiento -->
+      </div>
+      <!-- fin div funcionamiento -->
+
+      <div id="rutas-destacadas-slider">
+        <ul>
+          <li><a class="btn btnPrevious"> </a></li>
+        </ul>
+
+        <ul class="slider">
+          <li id="slide0">
+            <h1>Rutas Destacadas</h1>
+            <img src="img/img-index/rutas-destacadas.jpeg" />
+          </li>
+
+          <li id="slide1">
+            <h1>Ruta del Río Cares Picos de Europa</h1>
+            <img src="img/img-index/fotoruta1.jpg" />
+          </li>
+
+          <li id="slide2">
+            <h1>La Senda del Oso, Asturias</h1>
+            <img src="img/img-index/senda_del_oso_tunel.jpg" />
+          </li>
+          <li id="slide3">
+            <h1>Parque Nacional de Ordesa y Monteperdido, Huesca</h1>
+            <img src="img/img-index/gradasdesoaso.jpg" />
+          </li>
+
+          <li id="slide4">
+            <h1>Ruta de los Lagos de Saliencia, Somiedo, Asturias</h1>
+            <img
+              src="img/img-index/ruta-lagos-de-saliencia-en-somiedo-31-1170x780.jpg"
+            />
+          </li>
+
+          <li id="slide5">
+            <h1>Monte Pindo, Galicia</h1>
+            <img
+              src="img/img-index/1024px-Castelo_de_San_Xurxo,_O_Pindo,_Galicia.jpg"
+            />
+          </li>
+        </ul>
+
+        <ul>
+          <li><a class="btn btnNext"></a></li>
+        </ul>
+      </div>
+
+      <!-- mejores rutas -->
+      <div class="mejores-rutas">
+        <div class="titulo-mejores-rutas">
+          <p>TOP 10 Mejores Rutas en León</p>
+        </div>
+
+        <div class="video">
+          <iframe
+            src="https://www.youtube.com/embed/jn43viaFaA8"
+            title="LEÓN, viajes, rutas y turismo. Qué hacer y visitar. Los mejores lugares para ver. Recomendaciones"
+            frameborder="0"
+            allow=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <!-- fin div mejores-rutas -->
+
+      <!-- Testimonios -->
+      <div class="testimonios-frame">
+        <div class="testimonio">
+          <p>Testimonios</p>
+        </div>
+
+        <div class="testimonio-fondo">
+          <div class="testimonio-tarjeta">
+            <div class="comillas">
+              <img
+                class="funcionamiento-iconos"
+                src="img/img-index/comillas.png"
+                alt="comillas"
+              />
+            </div>
+            <div class="imagen-perfil"></div>
+            <div class="info-testimonio">
+              <p>Clara Luna</p>
+              <p>Estudiante</p>
+            </div>
+            <div class="testimonio-texto">
+              <p>
+                Lorem ipsum dolor sit amet consectetur. Tortor accumsan
+                hendrerit non volutpat eget urna morbi fermentum ac. Eu vel
+                facilisis scelerisque aenean diam viverra. Neque vel at tellus
+                in arcu elementum. Egestas sed in mi elementum mi maecenas
+                ultrices tellus.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin div testimonios-frame -->
+    </div>
+    <!-- fin div principal -->
+
+    <div class="footer">
+      <!-- importado desde header.html por medio de funciones.js -->
+    </div>
+    <!-- fin footer -->
+
+    <script src="js/script-index.js" type="module"></script>
+
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  </body>
+</html>

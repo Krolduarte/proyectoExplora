@@ -1,0 +1,307 @@
+body {
+  width: 100%;
+  margin: 0 0 0 0;
+  font-family: "Raleway", sans-serif;
+  background-color: #f8fafc;
+  height: 100vh;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+}
+
+.xplora-logo > a {
+  color: white;
+}
+
+.iniciar-sesion {
+  color: black;
+}
+
+/* ##########################################################################
+                                HEADER
+############################################################################# */
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  height: 270px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.7)),
+    url("../img/img-detalle/mujerconmochila.jpg") no-repeat center;
+  /* background: url("../img/img-index/foto-header1.jpeg") no-repeat top; */
+  background-size: cover;
+  overflow: hidden;
+}
+
+.areatitulo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.titulo-central {
+  color: white;
+  font-weight: 600;
+  font-size: 36px;
+  /* margin-top: 100px; */
+}
+
+/* contenido es el div donde estan las dos columnas */
+.contenido {
+  display: flex;
+  padding-bottom: 40px;
+}
+
+/* ##########################################################################
+                               COLUMNA IZQUIERDA
+############################################################################# */
+.colizq {
+  padding: 3% 0% 3% 3%;
+  width: 65%;
+  height: 150vh;
+  display: flex;
+  flex-direction: column;
+}
+#map {
+  width: 100%;
+  height: 50%;
+  z-index: 0;
+}
+
+.barradetalle {
+  display: flex;
+  width: 100%;
+  height: 5%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+}
+
+.descripcion {
+  line-height: 25px;
+  width: 100%;
+  height: 40%;
+text-align: justify;
+  /* background-color: yellow; */
+}
+
+/* 
+ESTILOS DE LA BARRA DE DETALLLE */
+
+.nivel {
+  /* background-color: #fd0505; */
+
+  width: 20%;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 2px;
+}
+.nivel ~ span {
+  width: 20%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnInt {
+  /* background-color: red; */
+  padding: 10px 15px;
+}
+
+/* TAÑANO DE ICONOS */
+
+.icono-distancia {
+  width: 21px;
+  height: 21px;
+}
+
+.altura-up,
+.altura-down {
+  width: 16px;
+  height: 16px;
+}
+
+.altura-down {
+  transform: rotate(180deg);
+}
+
+.icono-tiempo {
+  width: 13px;
+  height: 13px;
+}
+
+.icono-avatar {
+  width: 17px;
+  height: 17px;
+}
+
+/* ##########################################################################
+                               COL DERECHA
+############################################################################# */
+
+.colder {
+  width: 35%;
+  height: 150vh;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.box-detalles {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 90%;
+  height: 15%;
+  background-color: #d9d9d9;
+}
+.imagen {
+  box-sizing: border-box;
+  width: 90%;
+  height: 25%;
+  
+}
+
+.uno{
+background: url(../img/img-index/fondo_principal.jpg);
+background-size: cover;
+}
+
+.dos{
+  background: url(../img/img-index/ruta-lagos-de-saliencia-en-somiedo-31-1170x780.jpg);
+background-size: cover;
+}
+
+.tres{
+  background: url(../img/img-index/rutacares.jpg);
+  background-size: cover;
+}
+
+.grid {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 25px);
+  font-size: 15px;
+}
+
+h3 {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+.autortitulo {
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
+.nombreautor {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+.fechatitulo {
+  grid-column: 1/2;
+  grid-row: 4/5;
+}
+.fecharuta {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+.tiporuta {
+  grid-column: 1/2;
+  grid-row: 5/6;
+}
+.circular {
+  grid-column: 2/3;
+  grid-row: 5/6;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* media queries  */
+
+@media only screen and (max-width: 600px) {
+  .colizq {
+    width: 100%;
+    height: 150vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .colder {
+    width: 0%;
+  }
+  .imagen {
+    display: none;
+  }
+
+  .box-detalles {
+    background-color:#f8fafc;
+    position: absolute;
+    width: 100%;
+    height: 130px;
+    left: 0px;
+    top: 220px;
+  }
+
+  #map {
+    margin-top: 50px;
+    width: 96%;
+  }
+
+  .grid {
+    background-color:#254441;
+    color:white;
+    border-radius: 20px;
+    width: 50%;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  h3{
+    text-align: center;
+  }
+  .bold{
+    padding-left: 30px;
+  }
+}
+
+
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+  color: black;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.tomato {
+  background-color: tomato;
+}
+
+.red {
+  background-color: red;
+}
+

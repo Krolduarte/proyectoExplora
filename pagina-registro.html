@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilos-registro.css" />
+    <link rel="stylesheet" href="css/estilos-menu-footer.css" />
+    <title>Registrate</title>
+  </head>
+  <body>
+    <div id="fondo"></div>
+
+    <div class="contenedor">
+      <!-- Menu   incluyendo logo,login y register -->
+      <div class="menu"></div>
+
+      <div class="principal">
+        <section class="col-izq"></section>
+        <!-- <div class="curva2">
+ 
+          - <svg  id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,400 C 0,400 0,133 0,133 C 39.85704772475029,156.88077444814405 79.71409544950058,180.76154889628808 140,178 C 200.28590455049942,175.23845110371192 281.00066592674796,145.83457886299175 337,140 C 392.99933407325204,134.16542113700825 424.2832408435074,151.90013565174496 467,143 C 509.7167591564926,134.09986434825504 563.866370699223,98.56487853002838 624,96 C 684.133629300777,93.43512146997162 750.2512763596006,123.84035022814155 797,147 C 843.7487236403994,170.15964977185845 871.128523862375,186.07372055740538 930,175 C 988.871476137625,163.92627944259462 1079.234628190899,125.86476754223702 1142,119 C 1204.765371809101,112.13523245776298 1239.932963374029,136.46720927364657 1285,144 C 1330.067036625971,151.53279072635343 1385.0335183129855,142.2663953631767 1440,133 C 1440,133 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#f2f8f7" fill-opacity="0.53" ></path>
+            <path d="M 0,400 C 0,400 0,266 0,266 C 61.09128129239116,261.19511653718087 122.18256258478232,256.3902330743618 168,266 C 213.81743741521768,275.6097669256382 244.36103095326183,299.63418423973366 296,310 C 347.63896904673817,320.36581576026634 420.37331360217047,317.07302996670364 481,295 C 541.6266863978295,272.92697003329636 590.1457146380565,232.0736958934517 648,225 C 705.8542853619435,217.9263041065483 773.0438278456036,244.63218645948945 827,267 C 880.9561721543964,289.36781354051055 921.6789739795288,307.39755826859044 966,315 C 1010.3210260204712,322.60244173140956 1058.2402762362808,319.7775804661487 1105,303 C 1151.7597237637192,286.2224195338513 1197.3599210753482,255.49211986681465 1253,247 C 1308.6400789246518,238.50788013318535 1374.320039462326,252.2539400665927 1440,266 C 1440,266 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#f2f8f7" fill-opacity="1" ></path></svg> 
+             </div> -->
+
+        <section class="col-der">
+          <div class="formulario">
+            <!-- AREA DEL TITULO -->
+            <div class="titulo-unete">
+              <h1>Únete a Xplora</h1>
+              <p>
+                ¿Ya tienes una cuenta?
+                <span><a href=""> Iniciar sesión</a></span>
+              </p>
+            </div>
+            <!-- FIN AREA DEL TITULO -->
+
+            <!-- FORMULARIO -->
+            <form action="" method="POST" id="formulario">
+            
+                <!-- NOMBRE Y APELLIDO -->
+             
+                  <label for="nombre">Nombre Completo</label>
+                  <input type="text" name="nombre" id="nombre" required />
+            
+
+                <!-- <div class="box elemento2">
+                  <label for="apellidos">Apellidos</label>
+                  <input type="text" name="apellidos" id="apellidos" required />
+                </div> -->
+     
+
+              <!-- EMAIL -->
+              <label for="email">Correo Electrónico</label>
+              <input type="email" name="email" id="email" minlength="5" >
+         
+              <div class="infoemail"></div>
+
+              <!-- NOMBRE DE USUARIO -->
+              <label for="usuario"
+                >Nombre de Usuario
+                <span>(únicamente letras, números y guiones bajos)</span></label
+              >
+              <input type="text" name="usuario" id="usuario" minlength="4" required />
+              <div class="infouser"></div>
+              <!-- CONTRASEÑA Y REPETIR CONTRASEÑA -->
+              <div class="group">
+                <div class="box elemento1">
+                  <label for="pwd"
+                    >Contraseña <span>(min. 8 caracteres)</span></label
+                  >
+
+                  <input type="password" name="pwd" id="pwd" required minlength="8" />
+                </div>
+
+                <div class="box elemento2">
+                  <label for="pwd-repeat">Repetir la Contraseña</label>
+                  <input
+                    type="password"
+                    name="pwd-repeat"
+                    id="pwd-repeat"
+                    
+                    required
+                    minlength="8"
+                  />
+                </div>
+              </div>
+
+              <div class="infopwd"></div>
+              <div class="infosecurity"></div>
+
+              <!-- ESTATURA PESO Y FECHA -->
+              <div class="group">
+                <div class="box elemento3">
+                  <label for="estatura">Estatura <span> (en cms)</span></label>
+                  <input
+                    type="number"
+                    name="estatura"
+                    id="estatura"
+                    min="100"
+                    max="220"
+
+                    required
+                  />
+                </div>
+
+                <div class="box elemento3">
+                  <label for="peso">Peso <span>(en kgs)</span></label>
+                  <input
+                    type="number"
+                    name="peso"
+                    id="peso"
+                    required
+                    min="40"
+                    max="200"
+                    pattern=" \d{2,3}\"
+                  />
+                </div>
+
+                <div class="box elemento3">
+                  <label for="fecha">Fecha de nacimiento</label>
+                  <input type="date" name="fecha" id="fecha" required min="1918-01-01"  />
+                </div>
+              </div>
+              <div class="epf"></div>
+
+              <div>
+                <p>Actividades Favoritas</p>
+
+                <div class="tipos-actividades">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="bicicleta"
+                      value="bicicleta"
+                      class="activities"
+                    />
+                    <label for="bicicleta">Bicicleta </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="moto"
+                      value="moto"
+                      class="activities"
+                    />
+                    <label for="moto">Moto de carretera </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="running"
+                      value="running"
+                      class="activities"
+                    />
+                    <label for="running">Running </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="paseo"
+                      value="paseo"
+                      class="activities"
+                    />
+                    <label for="paseo">Paseo </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="alpinismo"
+                      value="alpinismo"
+                      class="activities"
+                    />
+                    <label for="alpinismo">Alpinismo </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="kayak"
+                      value="kayak"
+                      class="activities"
+                    />
+                    <label for="kayak">Kayak </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BOTON REGISTRARSE -->
+              <input type="submit" value="Registrarse" id="registrarse" />
+              <div class="info"></div>
+            </form>
+         
+          </div>
+
+          <!-- FIN FORMULARIO -->
+      
+        </section>
+        <!-- FIN COLUMNA DERECHA -->
+      </div>
+      <!-- FIN CONTENEDOR -->
+    </div>
+    <!-- FIN DIV PRINCIPAL -->
+
+    <div class="footer">
+      <!-- importado desde header.html por medio de funciones.js -->
+    </div>
+
+    <script src="js/script-registro.js" type="module"></script>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  </body>
+</html>
