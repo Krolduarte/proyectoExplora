@@ -197,8 +197,9 @@ background-size: cover;
   width: 90%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(6, 25px);
+  grid-template-rows: repeat(auto, 25px);
   font-size: 15px;
+  padding-bottom: 10px;
 }
 
 h3 {
@@ -230,9 +231,49 @@ h3 {
   grid-row: 5/6;
 }
 
+.dist{
+  grid-column: 1/2;
+  grid-row: 6/7;
+}
+
+
+.alt{
+  grid-column: 1/2;
+  grid-row: 8/9;
+}
+
+.altm{
+  grid-column: 1/2;
+  grid-row: 7/8;
+}
+
+.altmax{
+  grid-column: 2/3;
+  grid-row: 7/8;
+}
+
+.altmin{
+  grid-column: 2/3;
+  grid-row: 8/9;
+}
+
+
+
+
+
+
+.distancia {
+  grid-column: 2/3;
+  grid-row: 6/7;
+}
+
+
+
 .bold {
   font-weight: 700;
 }
+
+
 
 /* media queries  */
 

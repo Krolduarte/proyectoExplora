@@ -79,9 +79,7 @@ filtros.forEach((filtro) => {
 
 crearBarraFiltros();
 var markers = [];
-
 let markersadded = false;
-
 let map = L.map("map").setView([42.45631, -6.767175], 13);
 L.tileLayer(
   "https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=0cac68bc84e4402b90c586f8997f0ed2",
@@ -140,6 +138,37 @@ function filtrar() {
   let maxDist = barraDistanciaMax.value;
   let minDist = barraDistanciaMin.value;
 
+
+//   fetch(`api/filtros`, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then((response) => {
+//       switch (response.status) {
+//         case 200:
+//           // console.log("Busqueda exitosa");
+//           // console.log(url);
+//           break;
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       data.forEach((dato) => {
+// maxDistance = dato.maxDistance;
+//       })
+
+ 
+//     });
+
+
+
+
+
+
+
+let distancias = [];
   let url = `api/routes?&`;
 
   if (nombreRuta) {
@@ -164,17 +193,24 @@ function filtrar() {
     .then((response) => {
       switch (response.status) {
         case 200:
-          console.log("Busqueda exitosa");
-          console.log(url);
+          // console.log("Busqueda exitosa");
+          // console.log(url);
           break;
       }
       return response.json();
     })
     .then((data) => {
-      data.forEach((dato) => {
 
-        console.log(dato);
-        //Agregar cada tarjeta de ruta con cada uno de los datos de las rutas
+      
+    
+      data.forEach((dato) => {
+        console.log(data);
+  //  distancias.push(dato.distance);
+  // let distanciaMinima = distancias.filter(item => item > minDist)
+  //  console.log(distanciaMinima);
+
+      
+    //Agregar cada tarjeta de ruta con cada uno de los datos de las rutas
         let div = document.createElement("div");
         let dificultad = "";
         switch (dato.dif) {
@@ -195,13 +231,14 @@ function filtrar() {
             break;
         }
         let idruta = dato.id;
+        let tcx = dato.tcx;
         
         
         div.innerHTML += `         
   <div class="leftside">
     <div class="titulo">
     
-    <a href="pagina-detalle-rutas.php?idruta=${idruta}">${dato.route_name}</a> 
+    <a href="pagina-detalle-rutas.php?idruta=${idruta}&tcx=${tcx}">${dato.route_name}</a> 
  </div>
     <div class="imagen">
       <img
@@ -281,7 +318,7 @@ function filtrar() {
             .openPopup()
         );
 
-        console.log(markers);
+        // console.log(markers);
 
         // marker.bindPopup("<img src=./>").openPopup();
         // let circle = L.circle([dato.start_lat, dato.start_lon], {
@@ -289,9 +326,12 @@ function filtrar() {
         //   color: "yellow",
         //   fillColor: "green",
         // }).addTo(map);
-      });
+    });
+      
+ 
 
       markersadded = true;
       console.log(`markers añadidos: ${markers.length}`);
     });
+    
 }

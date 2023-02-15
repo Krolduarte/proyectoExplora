@@ -1,13 +1,40 @@
 <?php
+
+// $file = "php/ruta_fuentes_elbierzo.tcx";
+if (isset($_GET['tcx'])) {
+$tcx = $_GET['tcx'];
+ $file = 'php/'.$tcx.'.tcx';
+
+$xml = simplexml_load_file($file);
+
+$items = $xml->Courses->Course->Track->Trackpoint;
+$nombre = $xml->Courses->Course->Name;
+$beginLat = strip_tags($xml->Courses->Course->Lap->BeginPosition->LatitudeDegrees);
+$beginLon = strip_tags($xml->Courses->Course->Lap->BeginPosition->LongitudeDegrees);
+$coord = array();
+foreach ($items as $item) {
+
+  $coord[] = array(
+
+    'nombre' => strip_tags($nombre),
+    'lat' => strip_tags($item->Position->LatitudeDegrees),
+    'lng' => strip_tags($item->Position->LongitudeDegrees),
+  );
+}
+}
+// echo "<pre>";
+// print_r($beginLon);
+// echo "     </pre>";
+
+
 if (isset($_GET['idruta'])) {
+
   $idruta = $_GET['idruta'];
- 
+
 
   $uri = "http://localhost/dwes/proyectoIntegrador/api/routes/?id=$idruta";
-
   $rutaJSON = file_get_contents($uri);
   $resultado = json_decode($rutaJSON);
-
 
   $nombreruta = $resultado[0]->route_name;
   $autor = $resultado[0]->user;
@@ -20,6 +47,7 @@ if (isset($_GET['idruta'])) {
   $description = $resultado[0]->description;
   $startLat = $resultado[0]->start_lat;
   $startLon = $resultado[0]->start_lon;
+  $distancia = $resultado[0]->distance;
 
   $rutas[] = array(
     'nombre' => $nombreruta,
@@ -27,7 +55,11 @@ if (isset($_GET['idruta'])) {
     'lng' => $startLon,
   );
 
- 
+// echo "<pre>";
+// print_r($rutas);
+// echo "     </pre>";
+
+
 
 
   switch ($dif) {
@@ -58,6 +90,8 @@ if (isset($_GET['idruta'])) {
   } else {
     $tiporuta = "no";
   }
+} else {
+  echo "<h1>no hay datos de la ruta</h1>";
 }
 
 ?>
@@ -104,7 +138,7 @@ if (isset($_GET['idruta'])) {
         </div>
 
         <span><?php echo $distance ?> kms<img class="icono-distancia" src="img/img-principal/distance.png" alt="distancia" /></span>
-      <!-- <span>Tiempo<img class="icono-tiempo" src="img/img-principal/icontime.png" alt="tiempo" /></span> -->
+        <!-- <span>Tiempo<img class="icono-tiempo" src="img/img-principal/icontime.png" alt="tiempo" /></span> -->
         <span><?php echo $maxHeight ?><img class="altura-up" src="img/img-principal/altitudarriba.png" alt="altura_alta" /></span>
         <span><?php echo $minHeight ?><img class="altura-down" src="img/img-principal/altitudarriba.png" alt="altura_baja" /></span>
       </div>
@@ -122,7 +156,16 @@ if (isset($_GET['idruta'])) {
           <div class="fechatitulo bold">Fecha:</div>
           <div class="fecharuta"> <?php echo $fecha ?></div>
           <div class="tiporuta bold">Circular</div>
-          <div class="circular"> <?php echo $tiporuta ?></div>
+          <div class="circular"><?php echo $tiporuta ?></div>
+
+          <div class="dist bold">Distancia</div>
+          <div class="distancia"> <?php echo $distance ?></div>
+
+          <div class="alt bold">Altura Máxima</div>
+          <div class="altmax"> <?php echo $maxHeight ?></div>
+
+          <div class="altm bold">Altura mínima</div>
+          <div class="altmin"> <?php echo $minHeight ?></div>
         </div>
 
       </div>
@@ -137,17 +180,17 @@ if (isset($_GET['idruta'])) {
     <!-- importado desde header.html por medio de funciones.js -->
   </div>
   <!-- fin footer -->
-  <script>
+  <!-- <script>
     function initMap() {
       let map = new google.maps.Map(document.getElementById("map"), {
         center: {
-          lat: 40,
-          lng: -4
+          lat: <?php echo $beginLat ?>,
+          lng: <?php echo $beginLon ?>
         },
         zoom: 7,
       });
     }
-  </script>
+  </script> -->
 
   <script async src=" https://maps.googleapis.com/maps/api/js?key=AIzaSyDxqeqhM5qi4qubPhqW3iBaVY-ZKgry3p0&callback=initMap">
   </script>
@@ -157,19 +200,19 @@ if (isset($_GET['idruta'])) {
     function initMap() {
       let map = new google.maps.Map(document.getElementById("map"), {
         center: {
-          lat: 42.600003,
-          lng: -5.57032
+          lat: <?php echo $beginLat ?>,
+          lng: <?php echo $beginLon ?>
         },
-        zoom: 6,
+        zoom: 14,
         mapTypeId: 'terrain',
         //  mapTypeId:google.maps.MapTypeId.SATELLITE
       });
 
-      let points = JSON.parse('<?php echo json_encode($rutas)?>');
+      let points = JSON.parse('<?php echo json_encode($coord);?>'); 
       // console.log(points);
       for (var i = 0; i < points.length; i++) {
         let nombre = points[i].nombre;
-        let icon = "img/img-index/location(1).png";
+        let icon = "img/img-index/pin(1).png";
         let latLng = new google.maps.LatLng(points[i].lat, points[i].lng);
         let marker = new google.maps.Marker({
           position: latLng,

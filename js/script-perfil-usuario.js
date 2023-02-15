@@ -41,6 +41,7 @@ console.log(url);
     .then((data) => {
       console.log(data[0]);
       // console.log(data[0]);
+      sessionStorage.setItem("id", data[0].id);
       document.querySelector("#usuario").value = data[0].username;
       document.querySelector("#email").value = data[0].email;
       // document.querySelector("#showPwd").value = data[0].pass;
