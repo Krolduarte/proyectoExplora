@@ -16,6 +16,8 @@ import { color } from "../js/funciones.js";
 import { defaultValue } from "../js/funciones.js";
 import { crearBarraFiltros } from "../js/funciones.js";
 
+
+
 // Funciones para generar filtros
 let filtros = [
   {
@@ -29,7 +31,7 @@ let filtros = [
   {
     input: "barraDesnivelMax",
     min: 0,
-    max: 20000,
+    max: 10000,
     text: "Desnivel Máximo : ",
     parrafo: "desnivelMax",
   },
@@ -102,15 +104,8 @@ document.querySelector("#closeBtn").addEventListener("click", () => {
   document.querySelector(".filtros").style.display = "none";
 });
 
-//función para filtrar por peticiones desde el index:
-// let nombreRuta = "";
-// if (localStorage.getItem('destino')){
-//     nombreRuta = localStorage.getItem('destino');
-// }else{
-//   nombreRuta = document.querySelector("#buscadorInput").value;
-// }
-document.querySelector("#buscadorInput").addEventListener("keyup", filtrar);
 
+document.querySelector("#buscadorInput").addEventListener("keyup", filtrar);
 window.addEventListener("load", filtrar);
 document.querySelector("#circular").addEventListener("change", filtrar);
 document.querySelector("#intensidad").addEventListener("change", filtrar);
@@ -119,9 +114,9 @@ barraDesnivelMax.addEventListener("change", filtrar);
 barraDistanciaMin.addEventListener("change", filtrar);
 barraDistanciaMax.addEventListener("change", filtrar);
 
+
 function filtrar() {
   if (markersadded) {
-    console.log(`borrando`);
     markers.forEach((marker) => {
       marker.remove();
     });
@@ -129,8 +124,14 @@ function filtrar() {
   markers = [];
 
   document.querySelector(".col-izq").innerHTML = "";
+  let nombreRuta = "";
 
-  let nombreRuta = document.querySelector("#buscadorInput").value;
+  if (localStorage.getItem('destino')){
+ nombreRuta = localStorage.getItem('destino');
+}else{
+nombreRuta = document.querySelector("#buscadorInput").value;
+}
+
   let circular = document.querySelector("#circular").value;
   let dif = document.querySelector("#intensidad").value;
   let minSlope = barraDesnivelMin.value;
@@ -139,51 +140,39 @@ function filtrar() {
   let minDist = barraDistanciaMin.value;
 
 
-//   fetch(`api/filtros`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-//     .then((response) => {
-//       switch (response.status) {
-//         case 200:
-//           // console.log("Busqueda exitosa");
-//           // console.log(url);
-//           break;
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       data.forEach((dato) => {
-// maxDistance = dato.maxDistance;
-//       })
-
- 
-//     });
-
-
-
-
-
-
-
-let distancias = [];
-  let url = `api/routes?&`;
+  let url = `api/routes?`;
 
   if (nombreRuta) {
-    url += `route_name=${nombreRuta}`;
+    url += `&route_name=${nombreRuta}`;
   }
   if (dif) {
-    url += `dif=${dif}`;
+    url += `&dif=${dif}`;
   }
 
   if (circular) {
-    url += `circular=${circular}`;
+    url += `&circular=${circular}`;
   }
 
-  // &min_dist=${minDist}&max_dist=${maxDist}&min_slope=${minSlope}&max_slope=${maxSlope}
 
+  if (minDist) {
+    url += `&minDist=${minDist}`;
+  }
+
+    if (maxDist) {
+    url += `&maxDist=${maxDist}`;
+  }
+
+  if (minSlope) {
+    url += `&minSlope=${minSlope}`;
+  }
+
+    if (maxSlope) {
+    url += `&maxSlope=${maxSlope}`;
+  }
+
+
+  // &min_dist=${minDist}&max_dist=${maxDist}&min_slope=${minSlope}&max_slope=${maxSlope}
+ 
   fetch(`${url}`, {
     method: "GET",
     headers: {
@@ -194,21 +183,18 @@ let distancias = [];
       switch (response.status) {
         case 200:
           // console.log("Busqueda exitosa");
-          // console.log(url);
+          
           break;
       }
       return response.json();
     })
     .then((data) => {
 
-      
-    
-      data.forEach((dato) => {
-        console.log(data);
-  //  distancias.push(dato.distance);
-  // let distanciaMinima = distancias.filter(item => item > minDist)
-  //  console.log(distanciaMinima);
+// filteredRoutes = data.filter(dato => dato.distance < maxDist && dato.distance > minDist )
+  
+    // filteredRoutes.forEach((dato) => {
 
+    data.forEach((dato) => {
       
     //Agregar cada tarjeta de ruta con cada uno de los datos de las rutas
         let div = document.createElement("div");
@@ -229,9 +215,16 @@ let distancias = [];
           case '4':
             dificultad = "Expertos";
             break;
+        }let tiporuta= "";
+
+        if (dato.circular == 0){
+tiporuta = "No circular";
+        }else{
+          tiporuta = "Circular";
         }
         let idruta = dato.id;
         let tcx = dato.tcx;
+       
         
         
         div.innerHTML += `         
@@ -269,7 +262,7 @@ let distancias = [];
           /></span>
   
           <span
-            >${dato.max_height} mt<img
+            >${dato.pos_slope} mt<img
               class="altura-up"
               src="img/img-principal/altitudarriba.png"
               alt="altura_alta"
@@ -278,14 +271,10 @@ let distancias = [];
   
         <div class="fila">
           <span
-            >6:30 h<img
-              class="icono-tiempo"
-              src="img/img-principal/icontime.png"
-              alt="tiempo"
-          /></span>
+            >${tiporuta}</span>
   
           <span
-            >${dato.min_height} mt<img
+            >${dato.neg_slope} mt<img
               class="altura-down"
               src="img/img-principal/altitudarriba.png"
               alt="altura_baja"
@@ -329,9 +318,10 @@ let distancias = [];
     });
       
  
-
+    localStorage.removeItem('destino');
       markersadded = true;
       console.log(`markers añadidos: ${markers.length}`);
+     
     });
     
 }

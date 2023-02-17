@@ -118,3 +118,21 @@ function crearBarraFiltros() {
 }
 
 export { crearBarraFiltros };
+
+
+const expresiones = {
+  email: /[a-z0-9\._-]+@([a-zA-Z]+\.)+[a-zA-Z]{2,}$/,
+  username: /^[a-zA-Z0-9_]{4,}$/,
+  password: /^((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,8})$/,
+};
+
+
+// function revisarMail() {
+//   if (!expresiones.email.test(email.value)) {
+//     infoEmail.innerHTML = `<p>*Correo electrónico no valido</p>`;
+//     infoEmail.classList.add("error");
+//   } else {
+//     infoEmail.innerHTML = "";
+//   }
+// }
+// export { revisarMail };

@@ -233,8 +233,7 @@ fecha.addEventListener("change", revisarfecha);
 //   event.target.setCustomValidity("Ingrese una fecha válida");
 // };
 function revisarfecha() {
-  if (fecha.value) {
-  }
+
 
   let hoy = new Date();
   let birthday = new Date(fecha.value);
@@ -321,14 +320,23 @@ document.querySelector("#registrarse").addEventListener("click", () => {
       })
       .then((data) => {
         console.log(data);
+        document.querySelector("#fondo").style.display = "unset";
+        document.querySelector("#inicio").style.visibility = "visible";
+        document.querySelector("#closeBtn").addEventListener("click", cancelarLogin);
+
+        function cancelarLogin(){
+          document.querySelector("#inicio").style.visibility = "hidden";
+          window.location.href = "pagina-principal.html";
+        }
         // if (data['success']) {
         //   sessionStorage.setItem("usuario", usuario.value);
            sessionStorage.setItem("id", data['id']);
         //   sessionStorage.setItem("token", data['token']);
-        setTimeout(() => {
-          window.location.href = "pagina-principal.html";
-        }, 4000);
+        // setTimeout(() => {
+        //   window.location.href = "pagina-principal.html";
+        // }, 4000);
       //}
+
       });
   // }else{
   //   divInfo.innerHTML =

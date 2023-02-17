@@ -2,29 +2,26 @@
 
 // $file = "php/ruta_fuentes_elbierzo.tcx";
 if (isset($_GET['tcx'])) {
-$tcx = $_GET['tcx'];
- $file = 'php/'.$tcx.'.tcx';
+  $tcx = $_GET['tcx'];
+  $file = 'php/rutasxml/' . $tcx . '.tcx';
 
-$xml = simplexml_load_file($file);
+  $xml = simplexml_load_file($file);
 
-$items = $xml->Courses->Course->Track->Trackpoint;
-$nombre = $xml->Courses->Course->Name;
-$beginLat = strip_tags($xml->Courses->Course->Lap->BeginPosition->LatitudeDegrees);
-$beginLon = strip_tags($xml->Courses->Course->Lap->BeginPosition->LongitudeDegrees);
-$coord = array();
-foreach ($items as $item) {
+  $items = $xml->Courses->Course->Track->Trackpoint;
+  $nombre = $xml->Courses->Course->Name;
+  $beginLat = strip_tags($xml->Courses->Course->Lap->BeginPosition->LatitudeDegrees);
+  $beginLon = strip_tags($xml->Courses->Course->Lap->BeginPosition->LongitudeDegrees);
+  $coord = array();
+  foreach ($items as $item) {
 
-  $coord[] = array(
+    $coord[] = array(
 
-    'nombre' => strip_tags($nombre),
-    'lat' => strip_tags($item->Position->LatitudeDegrees),
-    'lng' => strip_tags($item->Position->LongitudeDegrees),
-  );
+      'nombre' => strip_tags($nombre),
+      'lat' => strip_tags($item->Position->LatitudeDegrees),
+      'lng' => strip_tags($item->Position->LongitudeDegrees),
+    );
+  }
 }
-}
-// echo "<pre>";
-// print_r($beginLon);
-// echo "     </pre>";
 
 
 if (isset($_GET['idruta'])) {
@@ -44,6 +41,8 @@ if (isset($_GET['idruta'])) {
   $tiporuta = $resultado[0]->circular;
   $maxHeight = $resultado[0]->max_height;
   $minHeight = $resultado[0]->min_height;
+  $desnivelPos = $resultado[0]->pos_slope;
+  $desnivelNeg = $resultado[0]->neg_slope;
   $description = $resultado[0]->description;
   $startLat = $resultado[0]->start_lat;
   $startLon = $resultado[0]->start_lon;
@@ -54,12 +53,6 @@ if (isset($_GET['idruta'])) {
     'lat' => $startLat,
     'lng' => $startLon,
   );
-
-// echo "<pre>";
-// print_r($rutas);
-// echo "     </pre>";
-
-
 
 
   switch ($dif) {
@@ -138,9 +131,9 @@ if (isset($_GET['idruta'])) {
         </div>
 
         <span><?php echo $distance ?> kms<img class="icono-distancia" src="img/img-principal/distance.png" alt="distancia" /></span>
-        <!-- <span>Tiempo<img class="icono-tiempo" src="img/img-principal/icontime.png" alt="tiempo" /></span> -->
-        <span><?php echo $maxHeight ?><img class="altura-up" src="img/img-principal/altitudarriba.png" alt="altura_alta" /></span>
-        <span><?php echo $minHeight ?><img class="altura-down" src="img/img-principal/altitudarriba.png" alt="altura_baja" /></span>
+
+        <span><?php echo $desnivelPos ?><img class="altura-up" src="img/img-principal/altitudarriba.png" alt="altura_alta" /></span>
+        <span><?php echo $desnivelNeg ?><img class="altura-down" src="img/img-principal/altitudarriba.png" alt="altura_baja" /></span>
       </div>
       <div class="titulo">Descripción</div>
       <div class="descripcion"> <?php echo $description ?></div>
@@ -159,13 +152,13 @@ if (isset($_GET['idruta'])) {
           <div class="circular"><?php echo $tiporuta ?></div>
 
           <div class="dist bold">Distancia</div>
-          <div class="distancia"> <?php echo $distance ?></div>
+          <div class="distancia"> <?php echo $distance ?> kms</div>
 
           <div class="alt bold">Altura Máxima</div>
-          <div class="altmax"> <?php echo $maxHeight ?></div>
+          <div class="altmax"> <?php echo $maxHeight ?> m.</div>
 
           <div class="altm bold">Altura mínima</div>
-          <div class="altmin"> <?php echo $minHeight ?></div>
+          <div class="altmin"> <?php echo $minHeight ?> m.</div>
         </div>
 
       </div>
@@ -180,17 +173,7 @@ if (isset($_GET['idruta'])) {
     <!-- importado desde header.html por medio de funciones.js -->
   </div>
   <!-- fin footer -->
-  <!-- <script>
-    function initMap() {
-      let map = new google.maps.Map(document.getElementById("map"), {
-        center: {
-          lat: <?php echo $beginLat ?>,
-          lng: <?php echo $beginLon ?>
-        },
-        zoom: 7,
-      });
-    }
-  </script> -->
+
 
   <script async src=" https://maps.googleapis.com/maps/api/js?key=AIzaSyDxqeqhM5qi4qubPhqW3iBaVY-ZKgry3p0&callback=initMap">
   </script>
@@ -208,7 +191,7 @@ if (isset($_GET['idruta'])) {
         //  mapTypeId:google.maps.MapTypeId.SATELLITE
       });
 
-      let points = JSON.parse('<?php echo json_encode($coord);?>'); 
+      let points = JSON.parse('<?php echo json_encode($coord); ?>');
       // console.log(points);
       for (var i = 0; i < points.length; i++) {
         let nombre = points[i].nombre;

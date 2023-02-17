@@ -168,8 +168,9 @@ ESTILOS DE LA BARRA DE DETALLLE */
   justify-content: center;
   align-content: center;
   width: 90%;
-  height: 15%;
+  height: 17%;
   background-color: #d9d9d9;
+  border-radius: 15px;
 }
 .imagen {
   box-sizing: border-box;
@@ -181,16 +182,19 @@ ESTILOS DE LA BARRA DE DETALLLE */
 .uno{
 background: url(../img/img-index/fondo_principal.jpg);
 background-size: cover;
+border-radius: 15px;
 }
 
 .dos{
   background: url(../img/img-index/ruta-lagos-de-saliencia-en-somiedo-31-1170x780.jpg);
 background-size: cover;
+border-radius: 15px;
 }
 
 .tres{
   background: url(../img/img-index/rutacares.jpg);
   background-size: cover;
+  border-radius: 15px;
 }
 
 .grid {

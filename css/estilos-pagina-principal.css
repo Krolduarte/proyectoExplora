@@ -121,6 +121,7 @@ a.boton-buscador {
 }
 
 .tarjeta {
+border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,6 +131,7 @@ a.boton-buscador {
   /* height:20%; */
   min-height: 151px;
   min-width: 340px;
+
 }
 
 .leftside {
@@ -282,6 +284,7 @@ div.fila > span {
   min-width: 200px;
   min-height: 200px;
   z-index: 1;
+  border-radius: 15px;
 }
 
 input[type=text]#buscadorInput {

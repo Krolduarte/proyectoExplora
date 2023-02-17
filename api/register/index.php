@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($json['username']) && isset($json['fullname'])  && isset($json['pass']) && isset($json['email'])  && isset($json['height']) && isset($json['weight']) && isset($json['birthday']) && isset($json['activities'])) {
 
-       
+
         $json['activities'] = implode(",", $json['activities']);
         $pass = hash("sha512", $json['pass']);
         $username = $json['username'];
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
 
             $con->query($sql);
-             $id = $con->insert_id;
+            $id = $con->insert_id;
 
             header("HTTP/1.1 201 Created");
             header("Content-Type: application/json");
@@ -39,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'msg' => "usuario creado",
                 // 'token' => $jwt,
             ]);
-            // echo json_encode($con->insert_id);
         } catch (mysqli_sql_exception $e) {
             header("HTTP/1.1 400 Bad Request");
         }

@@ -91,6 +91,7 @@ barraDesnivelMax.addEventListener("change", filtrar);
 barraDistanciaMin.addEventListener("change", filtrar);
 barraDistanciaMax.addEventListener("change", filtrar);
 
+let url = `api/routes?&`;
 
 function filtrar(e) {
   console.log("filtrando");
@@ -98,15 +99,15 @@ function filtrar(e) {
 
   let circular = document.querySelector("#circular").value;
   let dif = document.querySelector("#intensidad").value;
-  //  let minSlope = barraDesnivelMin.value;
-  //  let maxSlope = barraDesnivelMax.value;
-  //  let maxDist = barraDistanciaMax.value;
-  //  let minDist = barraDistanciaMin.value;
+  
+    let minSlope = barraDesnivelMin.value;
+    let maxSlope = barraDesnivelMax.value;
+    let maxDist = barraDistanciaMax.value;
+    let minDist = barraDistanciaMin.value;
     let userid = sessionStorage.getItem('id');
    let nombreUsuario = sessionStorage.getItem('usuario');
    document.querySelector(".profileName").innerHTML = nombreUsuario;
 
-  let url = `api/routes?&`;
 
 
   if (dif) {
@@ -121,8 +122,6 @@ function filtrar(e) {
     url += `user=${userid}`;
   }
 
-  
-  
   fetch(`${url}`, {
     method: "GET",
     headers: {
@@ -160,12 +159,13 @@ function filtrar(e) {
             dificultad = "Expertos";
             break;
         }
-
+let idruta = dato.id;
+        let tcx = dato.tcx;
         div.innerHTML = `
 
           <div class="tarjeta">
   <div class="leftside">
-    <div class="titulo">${dato.route_name}</div>
+    <div class="titulo"> <a href="pagina-detalle-rutas.php?idruta=${idruta}&tcx=${tcx}">${dato.route_name}</a> </div>
     <div class="imagen">
       <img
         class="icono-walker"

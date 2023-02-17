@@ -1,16 +1,10 @@
 <?php
 require_once('../clases/conexion.php');
-// require '../vendor/autoload.php';
+
 
 //crear conexion
 $con = new Conexion();
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-
-    // $json = json_decode(file_get_contents('php://input'), true);
-    // if (isset($json['username'])) {
- //     $passHash = hash("sha512", $json['pass']);
-    //     $username = $json['username'];
   
  $uri = "http://localhost/dwes/proyectoIntegrador/api/users";
  if (isset($_REQUEST['username'])) {
@@ -37,19 +31,3 @@ if(!$resultado){
 }
 }
 
-
-    // $sql = "SELECT username FROM users";
-    // print_r($sql);
-    
-
-    // try {
-    //     $result = $con->query($sql);
-
-    //     // $users = $result->fetch_all(MYSQLI_ASSOC);
-    //     header("HTTP/1.1 200 OK");
-    //     // echo json_encode($users);
-    // } catch (mysqli_sql_exception $e) {
-    //     header("HTTP/1.1 404 Not Found");
-    // }
-    // exit;
-//}

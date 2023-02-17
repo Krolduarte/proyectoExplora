@@ -35,8 +35,24 @@ function goBack(event) {
 
 
 document.querySelector('#buscadorInput').addEventListener('blur', abrirPaginaPrincipal);
-function abrirPaginaPrincipal(e){
+document.querySelector('#buscadorInput').addEventListener('keydown', enviarDestino);
+
+function abrirPaginaPrincipal(){
+
+  localStorage.setItem('destino', document.querySelector('#buscadorInput').value)
+
   window.location.href= "./pagina-principal.html"
-  localStorage.setItem('destino', e.target.value)
+ 
+}
+
+function enviarDestino(e){
+  if(e.code === 'Enter') {
+    localStorage.setItem('destino', document.querySelector('#buscadorInput').value)
+    window.location.href= "./pagina-principal.html"
+  }
+
+  
+
+
  
 }
