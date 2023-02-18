@@ -15,11 +15,9 @@ fetchHTML("plantillas/header.html", menu).then(() => {
 window.addEventListener("resize", dimensionarIcono);
 import { dimensionarIcono } from "../js/funciones.js";
 
-
 let form = document.querySelector("#formulario");
 let pwdRepeatInput = document.getElementById("pwd-repeat");
 let nombre = document.querySelector("#nombre");
-let apellidos = document.querySelector("#apellidos");
 let email = document.querySelector("#email");
 let usuario = document.querySelector("#usuario");
 let contrasena = document.getElementById("pwd");
@@ -28,97 +26,111 @@ let peso = document.querySelector("#peso");
 let fecha = document.querySelector("#fecha");
 let divInfo = document.querySelector(".info");
 
+let emailValido = false;
+let userValido = false;
+let validMatch = false;
+let validPwds = false;
+let validHeight = false;
+let validWeight = false;
+let validBirthday = false;
 
-const expresiones = {
-  email: /[a-z0-9\._-]+@([a-zA-Z]+\.)+[a-zA-Z]{2,}$/,
-  username: /^[a-zA-Z0-9_]{4,}$/,
-  password: /^((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,8})$/,
-};
 
 // ###############################################
 // VALIDANDO CORREO ELECTRONICO
 // ###############################################
 
-email.addEventListener("input", revisarMail);
-let infoEmail = document.querySelector(".infoemail");
+email.addEventListener("blur", checkMail);
+email.addEventListener("focus", removeErrorMsg);
 
-function revisarMail() {
-  if (!expresiones.email.test(email.value)) {
+let infoEmail = document.querySelector(".infoemail");
+let emailReg = /[a-z0-9\._-]+@([a-zA-Z]+\.)+[a-zA-Z]{2,}$/;
+
+function checkMail() {
+
+  if (!emailReg.test(email.value)) {
+    email.classList.add("border-red");
     infoEmail.innerHTML = `<p>*Correo electrónico no valido</p>`;
-    infoEmail.classList.add("error");
   } else {
-    infoEmail.innerHTML = "";
+    emailValido = true;
   }
 }
 
+// Esta función sera utilizada en todos los parámetros para remover el borde rojo al poner el foco de nuevo
+
+function removeErrorMsg(e) {
+  e.target.nextElementSibling.innerHTML = "";
+  e.target.classList.remove("border-red");
+}
+
 // ###############################################
-// VALIDANDO PATRON DE USUARIO
+//         VALIDANDO PATRON DE USUARIO
 // ###############################################
 let infoUser = document.querySelector(".infouser");
-usuario.addEventListener("change", checkPattern);
 
-function checkPattern() {
-  if (!expresiones.username.test(usuario.value)) {
-    infoUser.innerHTML = `<p>*Ingrese un nombre de usuario valido, mínimo 4 caracteres</p>`;
-    infoUser.classList.add("error");
-  }else{
-     usuario.addEventListener("change", checkUser);
-  }
-}
+usuario.addEventListener("blur", checkUser);
+usuario.addEventListener("focus", removeErrorMsg);
 
 function checkUser() {
-  fetch(`http://localhost/dwes/proyectoIntegrador/api/checkuser?username=${usuario.value}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    req: JSON.stringify(usuario.value),
-  })
-    .then((response) => {
-      console.log(response);
-      switch (response.status) {
-        case 200:
-          infoUser.innerHTML = `<lord-icon
-          src="https://cdn.lordicon.com/egiwmiit.json"
-          trigger="loop"
-          delay="2000"
-          style="width:32px;height:32px">
-      </lord-icon>`;
 
-          break;
-        case 400:
-          infoUser.innerHTML = `<p>*Nombre existente.</p>`;
-          infoUser.classList.add("error");
-          break;
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
+    if (usuario.value !== ""){
+        fetch(
+            `http://localhost/dwes/proyectoIntegrador/api/checkuser?username=${usuario.value}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              req: JSON.stringify(usuario.value),
+            }
+          )
+            .then((response) => {
+              switch (response.status) {
+                case 200:
+                  infoUser.innerHTML = `
+                  <lord-icon
+                  src="https://cdn.lordicon.com/egiwmiit.json"
+                  trigger="loop"
+                  delay="2000"
+                  style="width:15px;height:15px">
+                </lord-icon> Nombre de usuario disponible`;
+                  userValido = true;
+                  break;
+        
+                case 400:
+                  infoUser.innerHTML = `<p>*Nombre existente.</p>`;
+                  usuario.classList.add("border-red");
+                  userValido = false;
+                  break;
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log(data);
+            });
+    }
+  
 }
 
 //Funciones para contraseña y repetir contraseña
+pwdRepeatInput.addEventListener("focus", removeErrorMsg);
+pwdRepeatInput.addEventListener("blur", checkPasswordsMatch);
+
 let infopwd = document.querySelector(".infopwd");
-pwdRepeatInput.onblur = function () {
+
+function checkPasswordsMatch() {
   if (pwdRepeatInput.value != contrasena.value) {
-    infopwd.innerHTML =
-      "*La contraseña ingresada es distinta, ingrese la misma contraseña";
-    pwdRepeatInput.classList.add("invalid");
-    pwdRepeatInput.classList.add("error");
-    infopwd.classList.add("error");
-  }
-};
-
-pwdRepeatInput.onfocus = function () {
-  if (this.classList.contains("invalid")) {
-    this.classList.remove("invalid");
-    this.classList.remove("error");
     infopwd.innerHTML = "";
+    pwdRepeatInput.classList.add("border-red");
+    pwdRepeatInput.classList.add("border-red");
+  } else {
+    validMatch = true;
   }
-};
+}
+// ###############################################
+//         SEGURIDAD DE LA CONTRASEÑA
+// ###############################################
 
-//Seguridad de la contraseña (muy débil, débil, aceptable, fuerte, muy segura).
+// Seguridad de la contraseña (muy débil, débil, aceptable, fuerte, muy segura).
 let infoSecurity = document.querySelector(".infosecurity");
 contrasena.addEventListener("input", checkSecurity);
 
@@ -147,7 +159,7 @@ function checkSecurity(e) {
   security += numMayus > 0 ? 1 : 0;
   security += numSimb > 0 ? 1 : 0;
 
-  //Funcion que revise la seguridad en cuanto al contenido de digitos, mayusculas, minusculas y simbolos
+  //   Funcion que revise la seguridad en cuanto al contenido de digitos, mayusculas, minusculas y simbolos
 
   if (security > 0 && security < 4) {
     infoSecurity.innerHTML =
@@ -175,79 +187,76 @@ function checkSecurity(e) {
     infoSecurity.style.color = "green";
   }
 
-  if (security >= 6 && pass.length >=8){
-
+  if (security >= 6) {
+    validPwds = true;
   }
-  //  console.log(`Password" ${pass} `);
-  //  console.log(`Security ${security}`);
+//   console.log(`Password" ${pass} `);
+//    console.log(`Security ${security}`);
 }
 
-//revisando estatura
-//entre 100 y 252
-let epf = document.querySelector(".epf");
-estatura.addEventListener("blur", checkHeight);
-peso.addEventListener("blur", checkWeight);
+// ###############################################
+//        VERIFICAR ESTATURA
+// ###############################################
 
-// estatura.oninvalid = function(event) {
-//   event.target.setCustomValidity('Estatura debe ser en cms');
-// }
+
+
+estatura.addEventListener("blur", checkHeight);
+estatura.addEventListener("focus", removeErrorMsg);
 
 function checkHeight(e) {
-  // console.log(e.target.value);
-  if (e.target.value < 100 || e.target.value > 250) {
-    epf.innerHTML = "<p>*Ingrese una estatura válida en metros</p>";
-    epf.classList.add("error");
+  console.log(estatura.value);
+  if (e.target.value < 50 || e.target.value.value > 220) {
+    document.querySelector("#infoestatura").innerHTML =
+      "<p>*Ingrese una estatura válida en metros</p>";
+    estatura.classList.add("border-red");
   } else {
-  
-    epf.innerHTML = "";
+    validHeight = true;
   }
 }
 
-//revisando peso
+// ###############################################
+//        VERIFICAR PESO
+// ###############################################
+peso.addEventListener("blur", checkWeight);
+peso.addEventListener("focus", removeErrorMsg);
+
 function checkWeight(e) {
-  // console.log(e.target.value);
-  if (e.target.value < 40) {
-    epf.innerHTML += "<p>*Ingrese un peso válido en kilogramos</p>";
-    epf.classList.add("error");
+  console.log(e.target.value);
+  if (e.target.value < 40 || e.target.value > 2800) {
+    document.querySelector("#infopeso").innerHTML =
+      "<p>*Ingrese un peso válido en kilogramos</p>";
+    peso.classList.add("border-red");
   } else {
-    epf.innerHTML = "";
-   
+    validWeight = true;
   }
 }
 
-// peso.oninvalid = function (event) {
-//   event.target.setCustomValidity("Ingrese su peso");
-// };
+// ###############################################
+//        VERIFICAR FECHA
+// ###############################################
 
-peso.blur = function () {
-  console.log(peso.value);
-  if (peso.value < 100) {
-    epf.innerHTML = "<p>Ingrese su peso en kilogramos</p>";
-  }
-};
+fecha.addEventListener("blur", checkDate);
+fecha.addEventListener("focus", removeErrorMsg);
 
-// Revisando Fecha  tipo: 1991-12-04   year month day
-fecha.addEventListener("change", revisarfecha);
-
-// fecha.oninvalid = function (event) {
-//   event.target.setCustomValidity("Ingrese una fecha válida");
-// };
-function revisarfecha() {
-
-
+function checkDate() {
   let hoy = new Date();
   let birthday = new Date(fecha.value);
   let years = 1000 * 86400 * 365 * 18;
 
   if (hoy.getTime() - birthday.getTime() < years) {
-    epf.innerHTML = `<p>Debes ser mayor de 18 años, ingresa la fecha de nacimiento nuevamente.</p>`;
-    epf.classList.add("error");
+    fecha.classList.add("border-red");
+    document.querySelector(
+      "#infofecha"
+    ).innerHTML = `<p>Debes ser mayor de 18 años, ingresa la fecha de nacimiento nuevamente.</p>`;
   } else {
     console.log("Puede registrarse, es mayor");
-    epf.innerHTML = ``;
+    validBirthday = true;
   }
 }
 
+// ###############################################
+//        GESTION DE ELECCION DE ACTIVIDADES
+// ###############################################
 //saber que actividades favoritas fueron escogidas
 //Si son checked cambian de color
 let actividades = [];
@@ -268,52 +277,54 @@ for (let checkbox of checkboxes) {
   });
 }
 
-//Registrando usuario
+// ###############################################
+//       REGISTRAR USUARIO SI LOS DATOS SON VALIDOS
+// ###############################################
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 });
 
-
 document.querySelector("#registrarse").addEventListener("click", () => {
- 
-   if (estatura.value >= 100 && estatura.value < 220 && contrasena.value.length >= 8 && peso.value > 40){
 
-    let persona = {
-      fullname: nombre.value,
-      email: email.value,
-      username: usuario.value,
-      pass: contrasena.value,
-      height: estatura.value,
-      weight: peso.value,
-      birthday: fecha.value,
-      activities: actividades,
-    };
-    console.log(JSON.stringify(persona));
-  
+    // Hacer el fetch solo si se cumplen estasn condiciones
+  if (
+    emailValido &&
+    userValido &&
+    validMatch &&
+    validPwds &&
+    validHeight &&
+    validWeight &&
+    validBirthday
+  ) {
+
+
     fetch("http://localhost/dwes/proyectoIntegrador/api/register/", {
       method: "POST",
       headers: {
-        'Content-Type':'application/json;charset=utf-8'
+        "Content-Type": "application/json;charset=utf-8",
       },
-     
-      body: JSON.stringify(persona),
+
+      body: JSON.stringify({
+
+        fullname: nombre.value,
+        email: email.value,
+        username: usuario.value,
+        pass: contrasena.value,
+        height: estatura.value,
+        weight: peso.value,
+        birthday: fecha.value,
+        activities: actividades,
+      }),
     })
       .then((response) => {
-    
-      
         switch (response.status) {
           case 200:
             divInfo.innerHTML = "<h1>Usuario registrado con éxito</h1>";
-            divInfo.classList.add('success');
+            divInfo.classList.add("success");
             break;
           case 400:
-            divInfo.innerHTML =
-              "<h2>Alguno de los campos es incorrecto o está vacío</h2>";
-              break;
-          case 409:
-            infoUser.innerHTML = "<p>Nombre ya existente</p>";
-            infoUser.classList.add('error');
+            divInfo.innerHTML = "<h2>Hubo un fallo en el registro</h2>";
             break;
         }
         return response.json();
@@ -322,30 +333,25 @@ document.querySelector("#registrarse").addEventListener("click", () => {
         console.log(data);
         document.querySelector("#fondo").style.display = "unset";
         document.querySelector("#inicio").style.visibility = "visible";
-        document.querySelector("#closeBtn").addEventListener("click", cancelarLogin);
+        document
+          .querySelector("#closeBtn")
+          .addEventListener("click", cancelarLogin);
 
-        function cancelarLogin(){
+        function cancelarLogin() {
           document.querySelector("#inicio").style.visibility = "hidden";
           window.location.href = "pagina-principal.html";
         }
         // if (data['success']) {
         //   sessionStorage.setItem("usuario", usuario.value);
-           sessionStorage.setItem("id", data['id']);
+        sessionStorage.setItem("id", data["id"]);
         //   sessionStorage.setItem("token", data['token']);
         // setTimeout(() => {
         //   window.location.href = "pagina-principal.html";
         // }, 4000);
-      //}
-
+        //}
       });
-  // }else{
-  //   divInfo.innerHTML =
-  //   "<h2>Alguno de los campos es incorrecto o está vacío</h2>";
-
-   }
+    // }else{
+    //   divInfo.innerHTML =
+    //   "<h2>Alguno de los campos es incorrecto o está vacío</h2>";
+  }
 });
-    
-
-  
-
-

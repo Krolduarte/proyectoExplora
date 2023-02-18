@@ -9,19 +9,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
 
     $json = json_decode(file_get_contents('php://input'), true);
 
-    if (isset($json['email'])  && isset($json['height']) && isset($json['weight']) && isset($json['birthday']) && isset($json['activities'])) {
+    if (isset($json['email'])  && isset($json['height']) && isset($json['weight']) && isset($json['birthday']) && isset($json['activities']) ) {
         // isset($json['pass']) && 
 
         $id = $json['id'];
         $email = $json['email'];
-        // $pass = $json['pass'];
+        
         $height = $json['height'];
         $weight = $json['weight'];
         $birthday = $json['birthday'];
-     $activities = implode(",", $json['activities']);
+        $activities = implode(",", $json['activities']);
 
-
+       if( isset($json['pass'])){
+        $pass = hash("sha512", $json['pass']);
+        $sql = "UPDATE users SET email='$email', pass='$pass', height='$height', weight='$weight', birthday='$birthday', activities='$activities' WHERE id ='$id'";
+       }else{
         $sql = "UPDATE users SET email='$email', height='$height', weight='$weight', birthday='$birthday', activities='$activities' WHERE id ='$id'";
+       }
+
+        
 
         try {
             // print_r($sql);

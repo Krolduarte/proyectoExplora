@@ -580,3 +580,6 @@ li {
   }
 }
 
+.red-border{
+  border-radius: 1px color red;
+}

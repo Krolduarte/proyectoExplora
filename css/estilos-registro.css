@@ -218,13 +218,26 @@ input:focus {
 .info,
 .infoemail,
 .infopwd,
-.epf,
-.infouser {
+.infouser,.infosecurity {
   font-style: normal;
   font-weight: 400;
   font-size: 11.4545px;
   /* line-height: 20px; */
   /* text-align: center; */
+}
+
+.infopwd{
+
+  box-sizing: border-box;
+ margin: 0 auto;
+ display: block;
+
+}
+.epf{
+
+
+  background-color: red;
+  font-size: 11px;
 }
 
 @media only screen and (max-width: 1000px) {

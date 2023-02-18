@@ -1,32 +1,16 @@
 //Función que permite abrir modal y aplicar cambios en el menú
 export function reloadScript() {
   let inicioSesion = document.querySelector(".iniciar-sesion");
-  let token =  sessionStorage.getItem("token");
+  let token = sessionStorage.getItem("token");
 
-  //funciones para mostrar en menu opciones de Perfil y quitar Registrarse
+    // **********************************************************
+    // FUNCIONES PARA GESTIONAR EL INICIO DE SESION 
+    // **********************************************************
+
   if (token) {
-    // fetch para guardar el nombre de usuario en local storage
-    fetch(`api/users/?id=${ sessionStorage.getItem("id")}`, {
-      method: "GET",
-      headers: {
-        Authorization: sessionStorage.getItem("token"),
-      },
-    })
-      .then((response) => {
-        switch (response.status) {
-          case 200:
-            break;
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // sessionStorage.setItem('username', data.username)
-      });
-
-
-
+    //Funciones para gestionar barra de navegación en caso de que usuario tenga un token:
     inicioSesion.textContent = "Cerrar Sesión";
-    console.log("Tiene token cambia menu");
+    console.log("Usuario Registrado: cambio en barra de navegación");
     inicioSesion.addEventListener("click", cerrarSesion);
     inicioSesion.removeEventListener("click", abrirModal);
     document.querySelector(".miperfil").style.display = "unset";
@@ -34,13 +18,12 @@ export function reloadScript() {
     document.querySelector(".registrarse").style.display = "none";
 
     function cerrarSesion(e) {
-    e.preventDefault();
-     sessionStorage.removeItem("token");
-     sessionStorage.removeItem("usuario");
-     sessionStorage.removeItem("id");
+      e.preventDefault();
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("usuario");
+      sessionStorage.removeItem("id");
       console.log("No tiene token");
       window.location.href = "index.html";
-
     }
   } else {
     inicioSesion.textContent = "iniciar Sesión";
@@ -63,22 +46,23 @@ export function reloadScript() {
     document.querySelector("#fondo").style.display = "none";
   }
 
-  //Gestionando inicio de sesión
+     // **********************************************************
+    // LLAMADA A LA API PARA COMPROBAR CREDENCIALES Y GESTIONAR INICIO DE SESION
+    // **********************************************************
+
   document.querySelector("#login").addEventListener("click", (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
-
-    let user = {
-      username: document.querySelector("#username").value,
-      pass: document.querySelector("#password2").value,
-    };
  
     fetch("api/login/", {
       method: "POST",
       headers: {
-        'Content-Type':'application/json;charset=utf-8'
+        "Content-Type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify({
+        username: document.querySelector("#username").value,
+        pass: document.querySelector("#password2").value,
+      }),
     })
       .then((response) => {
         switch (response.status) {
@@ -86,24 +70,33 @@ export function reloadScript() {
             return response.json();
             break;
           case 401:
-            document.querySelector(".mensajes").innerHTML =
-              "<p>Credenciales no válidas</p>";
-              document.querySelector("#login").style.marginTop = "-13px";
-
-          // mostrar div con error
+            revisarCredenciales();
         }
       })
       .then((data) => {
         console.log(data);
-        if (data['success']) {
-          sessionStorage.setItem("usuario", document.querySelector("#username").value);
-          sessionStorage.setItem("token", data['token']);
-        // sessionStorage.setItem("id", data['id']);
-        // sessionStorage.setItem("token", data.token);
-        //guardo y una vez que compruebo el token lo redirecciono
-        // window.location.href
-        window.location.href = "pagina-principal.html";
+        if (data["success"]) {
+          sessionStorage.setItem(
+            "usuario",
+            document.querySelector("#username").value
+          );
+          sessionStorage.setItem("token", data["token"]);
+          window.location.href = "pagina-principal.html";
         }
       });
   });
+}
+
+function revisarCredenciales() {
+  document.querySelector(".mensajes").innerHTML =
+    "<p>Credenciales no válidas</p>";
+  document.querySelector("#username").classList.add("border-red");
+  document.querySelector("#password2").classList.add("border-red");
+
+  document.querySelector("#username").addEventListener("focus", intentar);
+  function intentar() {
+    document.querySelector(".mensajes").innerHTML = "";
+    document.querySelector("#username").classList.remove("border-red");
+    document.querySelector("#password2").classList.remove("border-red");
+  }
 }

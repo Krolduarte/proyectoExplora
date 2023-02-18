@@ -90,11 +90,14 @@
                     required
                     minlength="8"
                   />
+                  <div class="infopwd"></div>
+                 
                 </div>
+              
               </div>
 
-              <div class="infopwd"></div>
               <div class="infosecurity"></div>
+    
 
               <!-- ESTATURA PESO Y FECHA -->
               <div class="group">
@@ -104,12 +107,14 @@
                     type="number"
                     name="estatura"
                     id="estatura"
-                    min="100"
+                    min="50"
                     max="220"
 
                     required
                   />
+                  <div  id="infoestatura"></div>
                 </div>
+             
 
                 <div class="box elemento3">
                   <label for="peso">Peso <span>(en kgs)</span></label>
@@ -119,17 +124,21 @@
                     id="peso"
                     required
                     min="40"
-                    max="200"
-                    pattern=" \d{2,3}\"
+                   
+                  
                   />
+                  <div  id="infopeso"></div>
                 </div>
+               
 
                 <div class="box elemento3">
                   <label for="fecha">Fecha de nacimiento</label>
                   <input type="date" name="fecha" id="fecha" required min="1918-01-01"  />
+                  <div  id="infofecha"></div>
                 </div>
               </div>
-              <div class="epf"></div>
+        
+            
 
               <div>
                 <p>Actividades Favoritas</p>

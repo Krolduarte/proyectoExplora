@@ -418,3 +418,8 @@ dos {
   box-sizing: border-box;
   padding: 0px 1px;
 }
+
+.infoSecurity {
+  width:100px;
+  height:20px;
+}
