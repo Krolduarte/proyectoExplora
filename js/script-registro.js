@@ -111,28 +111,15 @@ function checkUser() {
   
 }
 
-//Funciones para contraseña y repetir contraseña
-pwdRepeatInput.addEventListener("focus", removeErrorMsg);
-pwdRepeatInput.addEventListener("blur", checkPasswordsMatch);
 
-let infopwd = document.querySelector(".infopwd");
-
-function checkPasswordsMatch() {
-  if (pwdRepeatInput.value != contrasena.value) {
-    infopwd.innerHTML = "";
-    pwdRepeatInput.classList.add("border-red");
-    pwdRepeatInput.classList.add("border-red");
-  } else {
-    validMatch = true;
-  }
-}
 // ###############################################
 //         SEGURIDAD DE LA CONTRASEÑA
 // ###############################################
 
 // Seguridad de la contraseña (muy débil, débil, aceptable, fuerte, muy segura).
-let infoSecurity = document.querySelector(".infosecurity");
-contrasena.addEventListener("input", checkSecurity);
+let infoSecurity = document.querySelector(".infopwd1");
+contrasena.addEventListener("blur", checkSecurity);
+contrasena.addEventListener("focus", removeErrorMsg);
 
 function checkSecurity(e) {
   let pass = e.target.value;
@@ -165,6 +152,7 @@ function checkSecurity(e) {
     infoSecurity.innerHTML =
       "Contraseña muy debil, usa al menos un número, una mayúscula y un simbolo";
     infoSecurity.style.color = "purple";
+    contrasena.classList.add("border-red");
   }
   if (security == 5) {
     infoSecurity.innerHTML =
@@ -189,9 +177,27 @@ function checkSecurity(e) {
 
   if (security >= 6) {
     validPwds = true;
+  }else{
+   
   }
 //   console.log(`Password" ${pass} `);
 //    console.log(`Security ${security}`);
+}
+
+//Funciones para contraseña y repetir contraseña
+pwdRepeatInput.addEventListener("focus", removeErrorMsg);
+pwdRepeatInput.addEventListener("blur", checkPasswordsMatch);
+
+let infopwd = document.querySelector(".infopwd");
+
+function checkPasswordsMatch() {
+  if (pwdRepeatInput.value != contrasena.value) {
+    infopwd.innerHTML = "";
+    pwdRepeatInput.classList.add("border-red");
+    pwdRepeatInput.classList.add("border-red");
+  } else {
+    validMatch = true;
+  }
 }
 
 // ###############################################

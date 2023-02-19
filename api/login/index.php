@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'success' => true,
                 'msg' => "usuario ha podido hacer login",
                 'token' => $jwt,
-                //  'id'=> $id,
+            
 
             ]);
             exit;

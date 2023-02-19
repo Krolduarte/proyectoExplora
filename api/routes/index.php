@@ -9,7 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $sql = "SELECT * FROM routes WHERE 1 ";
 
 
-    if (isset($_GET['id']) || isset($_GET['route_name']) || isset($_GET['distance'])  || isset($_GET['max_height']) || isset($_GET['min_height'])  || isset($_GET['pos_slope']) || isset($_GET['neg_slope']) || isset($_GET['circular']) || isset($_GET['start_lat']) || isset($_GET['start_lon']) || isset($_GET['dif']) || isset($_GET['user']) || isset($_GET['date']) || isset($_GET['description']) || isset($_GET['tcx'])  || isset($_GET['minDist']) || isset($_GET['maxDist']) || isset($_GET['minSlope']) || isset($_GET['maxSlope'])    ) {
+    if (isset($_GET['id']) || isset($_GET['route_name']) || isset($_GET['distance'])  || isset($_GET['max_height']) || isset($_GET['min_height'])  || isset($_GET['pos_slope']) || isset($_GET['neg_slope']) || isset($_GET['circular']) || isset($_GET['start_lat']) || isset($_GET['start_lon']) || isset($_GET['dif']) || isset($_GET['user']) || isset($_GET['date']) || isset($_GET['description']) || isset($_GET['tcx'])  || isset($_GET['minDist']) || isset($_GET['maxDist']) || isset($_GET['minSlope']) || isset($_GET['maxSlope'] 
+    )
+    || isset($_GET['page'] )  
+    || isset($_GET['results_per_page'] ) ) {
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -96,12 +99,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $maxDist = $_GET['maxDist'];
             $sql .= " AND distance < '$maxDist'";
         }
+
+      
+
+        if (isset($_GET['results_per_page'])) {
+            $results_per_page = $_GET['results_per_page'];
+            $sql .= " LIMIT  $results_per_page";
+        }
+
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+            $offset = ($page -1) *$results_per_page;
+            $sql .= " OFFSET  $offset";
+        }
+     
+
+
+
     } elseif (count($_GET) > 0) {
         header("HTTP/1.1 400 Bad Request");
         exit;
     }
 
     try {
+        // print_r($sql);
         $result = $con->query($sql);
         $routes = $result->fetch_all(MYSQLI_ASSOC);
         header("HTTP/1.1 200 OK");

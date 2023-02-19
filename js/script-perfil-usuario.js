@@ -37,7 +37,7 @@ function getData() {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      //ç Authorization: localStorage.getItem("token"),
+    
     },
   })
     .then((response) => {
@@ -294,11 +294,11 @@ function editarUsuario(e) {
     }
 
     console.log(newuser);
-
+let token = localStorage.getItem("token");
     fetch(`http://localhost/dwes/proyectoIntegrador/api/edituser/`, {
       method: "PUT",
       headers: {
-        // Authorization: localStorage.getItem("token"),
+        Authorization: token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newuser),
@@ -343,6 +343,7 @@ function eliminar(e) {
     headers: {
       // Authorization: localStorage.getItem("token"),
       "Content-Type": "application/json",
+      "Authorization": localStorage.getItem("token"),
     },
   })
     .then((response) => {

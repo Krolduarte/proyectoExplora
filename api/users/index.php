@@ -17,10 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $fullname = $_GET['fullname'];
         $sql .= " AND fullname='$fullname'";
     } elseif (isset($_GET['pass'])) {
-
-        
-        $pass = $_GET['pass'];
-        
+        $pass = $_GET['pass'];     
         $sql .= " AND pass='$pass'";
 
     } elseif (isset($_GET['email'])) {
