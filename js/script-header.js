@@ -81,7 +81,9 @@ export function reloadScript() {
             document.querySelector("#username").value
           );
           sessionStorage.setItem("token", data["token"]);
+        
           window.location.href = "pagina-principal.html";
+       
         }
       });
   });

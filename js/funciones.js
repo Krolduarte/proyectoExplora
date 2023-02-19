@@ -127,6 +127,8 @@ const expresiones = {
 };
 
 
+
+
 // function revisarMail() {
 //   if (!expresiones.email.test(email.value)) {
 //     infoEmail.innerHTML = `<p>*Correo electrónico no valido</p>`;

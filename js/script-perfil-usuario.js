@@ -2,6 +2,7 @@
 let menu = document.querySelector(".menu");
 import { fetchHTML } from "../js/funciones.js";
 import { reloadScript } from "./script-header.js";
+import { mostrarLogin } from "../js/funciones.js";
 // fetch
 fetchHTML("plantillas/header.html", menu).then(() => {
   //importar footer
@@ -11,6 +12,11 @@ fetchHTML("plantillas/header.html", menu).then(() => {
 });
 window.addEventListener("resize", dimensionarIcono);
 import { dimensionarIcono } from "../js/funciones.js";
+
+
+
+
+
 
 let emailValido = true;
 let validHeight = true;
@@ -37,7 +43,6 @@ function getData() {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-    
     },
   })
     .then((response) => {
@@ -82,7 +87,7 @@ function getData() {
 
       document
         .querySelector("#showPwd")
-        .addEventListener("blur", checkSecurity);
+        .addEventListener("keyup", checkSecurity);
 
       document
         .querySelector("#showPwd")
@@ -91,7 +96,9 @@ function getData() {
       // ###############################################
       //         SEGURIDAD DE LA CONTRASEÑA NUEVA
       // ###############################################
+
       function checkSecurity(e) {
+        let infoSecurity = document.querySelector("#infoSecurity");
         validPwd = false;
         let pass = e.target.value;
 
@@ -120,39 +127,39 @@ function getData() {
         //   Funcion que revise la seguridad en cuanto al contenido de digitos, mayusculas, minusculas y simbolos
 
         if (security > 0 && security < 4) {
-          infoSecurity.innerHTML =
-            "Contraseña muy debil, usa al menos un número, una mayúscula y un simbolo";
-          infoSecurity.style.color = "purple";
+          infoSecurity.innerHTML = "Muy debil";
+          infoSecurity.style.backgroundColor = "red";
         }
         if (security == 5) {
-          infoSecurity.innerHTML =
-            "Contraseña debil,usa al menos un número, una mayúscula y un simbolo";
-          infoSecurity.style.color = "red";
+          infoSecurity.innerHTML = "Debil";
+          infoSecurity.style.backgroundColor = "red";
         }
 
         if (security == 6) {
-          infoSecurity.innerHTML = "Contraseña aceptable";
-          infoSecurity.style.color = "orange";
+          infoSecurity.innerHTML = "Aceptable";
+          infoSecurity.style.backgroundColor = "yellowgreen";
         }
 
         if (security == 7) {
-          infoSecurity.innerHTML = "Contraseña fuerte";
-          infoSecurity.style.color = "yellowgreen";
+          infoSecurity.innerHTML = "Segura";
+          infoSecurity.style.backgroundColor = "lightgreen";
         }
 
         if (security >= 8) {
-          infoSecurity.innerHTML = "Contraseña muy segura";
-          infoSecurity.style.color = "green";
+          infoSecurity.innerHTML = "Muy Segura";
+          infoSecurity.style.backgroundColor = "green";
         }
 
         if (security >= 6) {
           validPwd = true;
           newPwd = true;
+          document.querySelector("#showPwd").classList.remove("border-red");
         } else {
           document.querySelector("#showPwd").classList.add("border-red");
         }
-        //   console.log(`Password" ${pass} `);
-        //    console.log(`Security ${security}`);
+
+        // console.log(`Password" ${pass} `);
+        //   console.log(`Security ${security}`);
       }
     });
 }
@@ -160,6 +167,7 @@ function getData() {
 function removeErrorMsg(e) {
   e.target.nextElementSibling.innerHTML = "";
   e.target.classList.remove("border-red");
+  e.target.nextElementSibling.classList.remove("grey");
 }
 
 // ###############################################
@@ -176,9 +184,11 @@ function checkMail() {
   emailValido = false;
   if (!emailReg.test(email.value)) {
     email.classList.add("border-red");
-    infoEmail.innerHTML = `<p>*Correo electrónico no valido</p>`;
+    infoEmail.innerHTML = `Correo electrónico no valido`;
+    infoEmail.classList.add("grey");
   } else {
     emailValido = true;
+    infoEmail.classList.remove("grey");
   }
 }
 
@@ -194,8 +204,9 @@ function checkHeight(e) {
   console.log(estatura.value);
   if (estatura.value < 50 || estatura.value > 220) {
     document.querySelector("#infoestatura").innerHTML =
-      "<p>*Ingrese una estatura válida en metros</p>";
+      "*No es un peso válido en kg.";
     estatura.classList.add("border-red");
+    document.querySelector("#infoestatura").classList.add("grey");
   } else {
     validHeight = true;
   }
@@ -212,8 +223,9 @@ function checkWeight(e) {
 
   if (peso.value < 40 || peso.value > 2800) {
     document.querySelector("#infopeso").innerHTML =
-      "<p>*Ingrese un peso válido en kilogramos</p>";
+      "*No es un peso válido en kg.";
     peso.classList.add("border-red");
+    document.querySelector("#infopeso").classList.add("grey");
   } else {
     validWeight = true;
   }
@@ -227,18 +239,26 @@ fecha.addEventListener("blur", checkDate);
 fecha.addEventListener("focus", removeErrorMsg);
 
 function checkDate() {
+
   validBirthday = false;
   let hoy = new Date();
   let birthday = new Date(fecha.value);
   let years = 1000 * 86400 * 365 * 18;
+  let limitRange = 1000 * 86400 * 365 * 100;
 
-  if (hoy.getTime() - birthday.getTime() < years) {
+  if (
+    hoy.getTime() - birthday.getTime() < years ||
+    hoy.getTime() - birthday.getTime() > limitRange
+  ) {
+    
+  
     fecha.classList.add("border-red");
     document.querySelector(
       "#infofecha"
-    ).innerHTML = `<p>Debes ser mayor de 18 años, ingresa la fecha de nacimiento nuevamente.</p>`;
+    ).innerHTML = `Fecha no válida`;
+    document.querySelector("#infofecha").classList.add("grey");
   } else {
-    console.log("Puede registrarse, es mayor");
+ 
     validBirthday = true;
   }
 }
@@ -261,11 +281,6 @@ for (let checkbox of checkboxes) {
     }
   });
 }
-
-// checkMail();
-// checkHeight();
-// checkWeight();
-// checkDate();
 
 // ###############################################
 //  MODIFICAR PERFIL DE USUARIO SI INFO ES VALIDA
@@ -294,7 +309,7 @@ function editarUsuario(e) {
     }
 
     console.log(newuser);
-let token = localStorage.getItem("token");
+    let token = localStorage.getItem("token");
     fetch(`http://localhost/dwes/proyectoIntegrador/api/edituser/`, {
       method: "PUT",
       headers: {
@@ -313,9 +328,10 @@ let token = localStorage.getItem("token");
             break;
           case 200:
             console.log("El usuario se ha actualizado correctamente");
-            document.querySelector(".divInfo").innerHTML =
-              "<h3>Datos de usuario actualizados</h3>";
-            document.querySelector(".divInfo").classList.add("success");
+            alert("Datos de usuario actualizados");
+            setTimeout(() => {
+              window.location.href = "pagina-principal.html";
+            }, 1000);
             break;
         }
         return response.json();
@@ -343,7 +359,7 @@ function eliminar(e) {
     headers: {
       // Authorization: localStorage.getItem("token"),
       "Content-Type": "application/json",
-      "Authorization": localStorage.getItem("token"),
+      Authorization: localStorage.getItem("token"),
     },
   })
     .then((response) => {

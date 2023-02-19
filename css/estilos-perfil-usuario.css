@@ -419,7 +419,62 @@ dos {
   padding: 0px 1px;
 }
 
-.infoSecurity {
+/* .infoSecurity {
   width:100px;
   height:20px;
+} */
+
+
+.infoemail,
+.infopwd,
+.infouser,
+#infopeso,
+#infofecha,
+#infoestatura {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 20px;
+
+color: white;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11.4545px;
+  z-index: 9;
+  position: absolute;
+  margin: 0 5px 0 5px;
+}
+
+.infoemail {
+  margin-top: 110px;
+}
+
+
+
+
+
+#infoestatura,
+#infopeso,
+#infofecha {
+  margin-top: 55px;
+}
+
+.grey{
+ background-color: #4d4847; 
+}
+
+#infoSecurity{
+
+  width:fit-content;
+  height:18px;
+  padding:10px 15px;
+  font-size:11px;
+  border-radius: 20px;
+  margin-top: 4px;
+  margin-left: 20px;
+  justify-content: center;
+
+
+
+
 }
