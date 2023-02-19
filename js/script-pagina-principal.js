@@ -17,6 +17,10 @@ import { defaultValue } from "../js/funciones.js";
 import { crearBarraFiltros } from "../js/funciones.js";
 
 // Funciones para generar filtros dinamicamente
+let token= sessionStorage.getItem('token')
+if (token){
+  document.querySelector('#hidden').style.visibility ="visible";
+}
 let filtros = [
   {
     input: "barraDesnivelMin",

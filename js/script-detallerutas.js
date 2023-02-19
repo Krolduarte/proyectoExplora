@@ -11,4 +11,5 @@ fetchHTML("plantillas/header.html", menu).then(() => {
 });
 window.addEventListener("resize", dimensionarIcono);
 import { dimensionarIcono } from "../js/funciones.js";
+console.log(window.location.pathname);
 

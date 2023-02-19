@@ -3,9 +3,9 @@ export function reloadScript() {
   let inicioSesion = document.querySelector(".iniciar-sesion");
   let token = sessionStorage.getItem("token");
 
-    // **********************************************************
-    // FUNCIONES PARA GESTIONAR EL INICIO DE SESION 
-    // **********************************************************
+  // **********************************************************
+  // FUNCIONES PARA GESTIONAR EL INICIO DE SESION
+  // **********************************************************
 
   if (token) {
     //Funciones para gestionar barra de navegación en caso de que usuario tenga un token:
@@ -26,7 +26,7 @@ export function reloadScript() {
       window.location.href = "index.html";
     }
   } else {
-    inicioSesion.textContent = "iniciar Sesión";
+    inicioSesion.textContent = "Iniciar Sesión";
     inicioSesion.addEventListener("click", abrirModal);
     inicioSesion.addEventListener("click", function (event) {
       event.preventDefault();
@@ -46,14 +46,13 @@ export function reloadScript() {
     document.querySelector("#fondo").style.display = "none";
   }
 
-     // **********************************************************
-    // LLAMADA A LA API PARA COMPROBAR CREDENCIALES Y GESTIONAR INICIO DE SESION
-    // **********************************************************
+  // **********************************************************
+  // LLAMADA A LA API PARA COMPROBAR CREDENCIALES Y GESTIONAR INICIO DE SESION
+  // **********************************************************
 
   document.querySelector("#login").addEventListener("click", (e) => {
     e.preventDefault();
 
- 
     fetch("api/login/", {
       method: "POST",
       headers: {
@@ -75,15 +74,18 @@ export function reloadScript() {
       })
       .then((data) => {
         console.log(data);
-        if (data["success"]) {
-          sessionStorage.setItem(
-            "usuario",
-            document.querySelector("#username").value
-          );
-          sessionStorage.setItem("token", data["token"]);
-        
-          window.location.href = "pagina-principal.html";
-       
+        if (data) {
+          if (data["success"]) {
+            sessionStorage.setItem(
+              "usuario",
+              document.querySelector("#username").value
+            );
+            sessionStorage.setItem("token", data["token"]);
+
+            window.location.href = "pagina-misrutas.html";
+          }
+        } else {
+          console.log("credenciales no válidas");
         }
       });
   });

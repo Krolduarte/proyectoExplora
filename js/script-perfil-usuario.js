@@ -2,7 +2,7 @@
 let menu = document.querySelector(".menu");
 import { fetchHTML } from "../js/funciones.js";
 import { reloadScript } from "./script-header.js";
-import { mostrarLogin } from "../js/funciones.js";
+
 // fetch
 fetchHTML("plantillas/header.html", menu).then(() => {
   //importar footer
@@ -12,11 +12,6 @@ fetchHTML("plantillas/header.html", menu).then(() => {
 });
 window.addEventListener("resize", dimensionarIcono);
 import { dimensionarIcono } from "../js/funciones.js";
-
-
-
-
-
 
 let emailValido = true;
 let validHeight = true;
@@ -370,13 +365,11 @@ function eliminar(e) {
         //   console.log("token no valido");
         //   break;
         case 200:
-          document.querySelector(".divInfo").innerHTML =
-            "<h4>Se ha eliminado correctamente el usuario</h4>";
-          document.querySelector(".divInfo").classList.add("success");
+         alert("Se ha eliminado su cuenta.")
 
           setTimeout(() => {
-            window.location.href = "pagina-principal.html";
-          }, 1000);
+            window.location.href = "index.html";
+          }, 2000);
 
           break;
       }

@@ -250,6 +250,13 @@ input:focus {
   /* text-align: center; */
 }
 
+
+@media only screen and (max-width: 1450px) {
+  .iniciar-sesion {
+    color: black;
+  }
+
+}
 @media only screen and (max-width: 1000px) {
   .col-izq {
     width: 30%;
@@ -258,6 +265,11 @@ input:focus {
   .col-der {
     width: 70%;
   }
+  .iniciar-sesion {
+    color: black;
+  }
+
+
 }
 
 @media only screen and (max-width: 800px) {

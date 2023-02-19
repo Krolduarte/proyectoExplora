@@ -16,12 +16,16 @@ function dimensionarIcono() {
   let src = "";
   if (window.innerWidth < 1024) {
     if (
-      window.location.pathname == "/pagina-registro.html" ||
-      window.location.pathname == "/pagina-perfil-usuario.html" ||
-      window.location.pathname == "/pagina-misrutas.html"
+      window.location.pathname == "/dwes/proyectoIntegrador/pagina-registro.html" ||
+      window.location.pathname == "/dwes/proyectoIntegrador/pagina-detalle-rutas.php" ||
+      window.location.pathname == "/dwes/proyectoIntegrador/pagina-misrutas.html" ||
+      window.location.pathname == "/dwes/proyectoIntegrador/pagina-perfil-usuario.html"
     ) {
+          //  icono negro
       src = `"https://cdn.lordicon.com/bhfjfgqz.json" colors="primary:#f121331"`;
     } else {
+
+    //  icono blanco
       src = `"https://cdn.lordicon.com/bhfjfgqz.json" colors="primary:#ffffff`;
     }
 
@@ -120,24 +124,8 @@ function crearBarraFiltros() {
 export { crearBarraFiltros };
 
 
-const expresiones = {
-  email: /[a-z0-9\._-]+@([a-zA-Z]+\.)+[a-zA-Z]{2,}$/,
-  username: /^[a-zA-Z0-9_]{4,}$/,
-  password: /^((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,8})$/,
-};
 
 
-
-
-// function revisarMail() {
-//   if (!expresiones.email.test(email.value)) {
-//     infoEmail.innerHTML = `<p>*Correo electrónico no valido</p>`;
-//     infoEmail.classList.add("error");
-//   } else {
-//     infoEmail.innerHTML = "";
-//   }
-// }
-// export { revisarMail };
 
 
 

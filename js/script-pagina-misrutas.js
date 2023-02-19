@@ -109,7 +109,6 @@ function filtrar(e) {
    document.querySelector(".profileName").innerHTML = nombreUsuario;
 
 
-
   if (dif) {
     url += `dif=${dif}`;
   }
@@ -118,8 +117,25 @@ function filtrar(e) {
     url += `circular=${circular}`;
   }
 
-    if (userid) {
-    url += `user=${userid}`;
+    if (nombreUsuario) {
+    url += `user=${nombreUsuario}`;
+  }
+
+
+  if (minDist) {
+    url += `&minDist=${minDist}`;
+  }
+
+  if (maxDist) {
+    url += `&maxDist=${maxDist}`;
+  }
+
+  if (minSlope) {
+    url += `&minSlope=${minSlope}`;
+  }
+
+  if (maxSlope) {
+    url += `&maxSlope=${maxSlope}`;
   }
 
   fetch(`${url}`, {
@@ -161,6 +177,15 @@ function filtrar(e) {
         }
 let idruta = dato.id;
         let tcx = dato.tcx;
+
+        let tiporuta = "";
+
+        if (dato.circular == 0) {
+          tiporuta = "No circular";
+        } else {
+          tiporuta = "Circular";
+        }
+
         div.innerHTML = `
 
           <div class="tarjeta">
@@ -194,28 +219,24 @@ let idruta = dato.id;
           /></span>
 
           <span
-            >${dato.max_height} mt<img
-              class="altura-up"
-              src="img/img-principal/altitudarriba.png"
-              alt="altura_alta"
-          /></span>
-        </div>
-
-        <div class="fila">
-          <span
-            >6:30 h<img
-              class="icono-tiempo"
-              src="img/img-principal/icontime.png"
-              alt="tiempo"
-          /></span>
-
-          <span
-            >${dato.min_height} mt<img
-              class="altura-down"
-              src="img/img-principal/altitudarriba.png"
-              alt="altura_baja"
-          /></span>
-        </div>
+          >${dato.pos_slope} mt<img
+            class="altura-up"
+            src="img/img-principal/altitudarriba.png"
+            alt="altura_alta"
+        /></span>
+      </div>
+    
+      <div class="fila">
+        <span
+          >${tiporuta}</span>
+    
+        <span
+          >${dato.neg_slope} mt<img
+            class="altura-down"
+            src="img/img-principal/altitudarriba.png"
+            alt="altura_baja"
+        /></span>
+      </div>
 
         <div class="fila">
           <span

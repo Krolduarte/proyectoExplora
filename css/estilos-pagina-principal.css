@@ -493,4 +493,6 @@ font-size: 10px;
 }
 
 
-
+#hidden{
+  visibility: hidden;;
+}

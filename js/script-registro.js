@@ -29,7 +29,7 @@ let divInfo = document.querySelector(".info");
 let emailValido = false;
 let userValido = false;
 let validMatch = false;
-let validPwds = false;
+let validPwd = false;
 let validHeight = false;
 let validWeight = false;
 let validBirthday = false;
@@ -113,16 +113,16 @@ function checkUser() {
 let infoSecurity = document.querySelector(".infopwd1");
 contrasena.addEventListener("keyup", checkSecurity);
 contrasena.addEventListener("focus", removeErrorMsg);
-// contrasena.addEventListener("focus", removeGrey);
 
-// function removeGrey(e) {
- 
+infoSecurity.addEventListener('click', pwdWarning);
+function pwdWarning(){
+  document.querySelector('.pwdWarning').style.display="unset";
+ document.querySelector('.pwdWarning').innerHTML= `Incluye una mayúscula, un número y un símbolo.`;
 
-//   e.target.nextElementSibling.classList.remove("grey");
-// }
-
+}
 
 function checkSecurity(e) {
+  document.querySelector('.pwdWarning').style.display="none";
   let pass = e.target.value;
 
   let security = 0;
@@ -154,37 +154,45 @@ function checkSecurity(e) {
   if (security > 0 && security < 4) {
     // infoSecurity.innerHTML = "Contraseña muy debil";
     infoSecurity.style.backgroundColor = "red";
+    infoSecurity.textContent= "!";
    
   }
   if (security == 5) {
     // infoSecurity.innerHTML = "Contraseña debil";
     infoSecurity.style.backgroundColor = "red";
+    infoSecurity.textContent= "!";
   }
 
   if (security == 6) {
     // infoSecurity.innerHTML = "Contraseña aceptable";
     infoSecurity.style.backgroundColor = "yellowgreen";
+    infoSecurity.textContent= "ok";
   }
 
   if (security == 7) {
     // infoSecurity.innerHTML = "Contraseña fuerte";
     infoSecurity.style.backgroundColor = "green";
+    infoSecurity.textContent= "ok";
   }
 
   if (security >= 8) {
     // infoSecurity.innerHTML = "Contraseña muy segura";
     infoSecurity.style.backgroundColor = "green";
+    infoSecurity.textContent= "ok";
   }
 
   if (security >= 6) {
-    validPwds = true;
+    validPwd = true;
+    document.querySelector('.pwdWarning').style.display="none";
 
-  } 
-    
-  
+  } else{
+    document.querySelector('#pwd').classList.add("border-red");
+  }
+}
+ 
   //   console.log(`Password" ${pass} `);
   //    console.log(`Security ${security}`);
-}
+
 
 //Funciones para contraseña y repetir contraseña
 pwdRepeatInput.addEventListener("focus", removeErrorMsg);
@@ -306,7 +314,7 @@ document.querySelector("#registrarse").addEventListener("click", () => {
     emailValido &&
     userValido &&
     validMatch &&
-    validPwds &&
+    validPwd &&
     validHeight &&
     validWeight &&
     validBirthday
@@ -333,6 +341,7 @@ document.querySelector("#registrarse").addEventListener("click", () => {
           case 200:
             divInfo.innerHTML = "<h1>Usuario registrado con éxito</h1>";
             divInfo.classList.add("success");
+            sessionStorage.setItem("id", data["id"]);
             break;
           case 400:
             divInfo.innerHTML = "<h2>Hubo un fallo en el registro</h2>";
@@ -342,10 +351,20 @@ document.querySelector("#registrarse").addEventListener("click", () => {
       })
       .then((data) => {
         console.log(data);
-        mostrarLogin()
+        alert("Te has registrado correctamente. Inicia Sesión")
+        document.querySelector("#fondo").style.display = "unset";
+        document.querySelector("#inicio").style.visibility = "visible";
+        document
+          .querySelector("#closeBtn")
+          .addEventListener("click", cancelarLogin);
+      
+        function cancelarLogin() {
+          document.querySelector("#inicio").style.visibility = "hidden";
+           window.location.href = "pagina-principal.html";
+        }
         // if (data['success']) {
         //   sessionStorage.setItem("usuario", usuario.value);
-        sessionStorage.setItem("id", data["id"]);
+       
         //   sessionStorage.setItem("token", data['token']);
         // setTimeout(() => {
         //   window.location.href = "pagina-principal.html";
@@ -361,6 +380,9 @@ document.querySelector("#registrarse").addEventListener("click", () => {
 
 
 
+
+
+document.querySelector('#linkInicio').addEventListener('click', mostrarLogin)
 function mostrarLogin(e){
   e.preventDefault();
   document.querySelector("#fondo").style.display = "unset";
@@ -373,6 +395,8 @@ function mostrarLogin(e){
     document.querySelector("#inicio").style.visibility = "hidden";
      window.location.href = "pagina-principal.html";
   }
-}
 
-document.querySelector('#linkInicio').addEventListener('click', mostrarLogin)
+
+
+
+}

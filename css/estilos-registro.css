@@ -257,12 +257,16 @@ color: white;
 }
 
 .infopwd1{
+  cursor: pointer;
   width:20px;
   height:20px;
   border-radius: 50%;
   margin-top: 25px;
   margin-left: -23px;
   position: absolute;
+  text-align: center;
+  color:white;
+
 
 
 }
@@ -420,4 +424,19 @@ input:invalid {
   animation-duration: 1.5s;
   animation-name: rebote;
   box-shadow: 0 0 0.6rem #254441;
+}
+
+.pwdWarning{
+
+ display: none;
+  background-color: #254441;
+  color:white;
+  font-size: 10px;
+  padding: 5px 10px;
+  width:150px;
+  height: fit-content;
+  position:relative;
+ 
+text-align: center;
+  border-radius: 10px;
 }
